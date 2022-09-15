@@ -1,8 +1,14 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
+
+import { Dropdown, Menu } from "../components";
+import SearchIcon from "../assets/icons/Search.svg";
+import MovieCard from "../components/MovieCard";
+import useData from "../hooks/useData";
 
 const Home: NextPage = () => {
+  const data = useData();
+
   return (
     <div>
       <Head>
@@ -15,9 +21,67 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <div className="flex flex-col gap-4 justify-center items-center h-screen">
-          <Image src="/logo.svg" width={512} height={512} alt="cineast" />
-          <h1 className="text-3xl font-bold underline">Hello cineast!</h1>
+        {/* navbar */}
+        <div className="navbar flex h-16 items-center justify-between bg-custom-cyan pl-8 pr-8">
+          <div className="flex items-center justify-center gap-4">
+            <div className="brand font-playfair text-lg font-medium">
+              Cineast
+            </div>
+            <div className="item-center flex justify-center gap-4">
+              <a
+                href="/home"
+                className="hidden w-full justify-center rounded-md px-1 py-2 text-sm font-medium text-gray-700 focus:outline-none md:inline-flex"
+              >
+                Home
+              </a>
+              <Dropdown title="Explore" />
+              <Dropdown title="Community" />
+              <a
+                href="/watch"
+                className="hidden w-full justify-center rounded-md px-1 py-2 text-sm font-medium text-gray-700 focus:outline-none md:inline-flex"
+              >
+                Watch
+              </a>
+            </div>
+          </div>
+          <div className="flex items-center justify-center gap-4">
+            <div className="hidden h-8 w-52 items-center justify-center rounded bg-white px-2 py-1 xxs:flex lg:w-64">
+              <input
+                type="text"
+                name="search-movies"
+                className="w-4/5 rounded text-sm outline-none placeholder:text-xs focus:outline-none"
+                placeholder="Find Movies, Tv Shows"
+              />
+              <button className="inline-flex h-10 w-1/5 items-center justify-center border-none focus:outline-none">
+                <SearchIcon width={15} height={15} />
+              </button>
+            </div>
+            <button className="hidden border-none outline-none md:inline-block">
+              Sign up
+            </button>
+            <button className="hidden border-none outline-none md:inline-block">
+              Log in
+            </button>
+            <Menu />
+          </div>
+        </div>
+        {/* navbar */}
+
+        {/* main */}
+        <div className="mx-4 flex flex-col justify-center py-4 md:mx-8 md:py-8">
+          {/* category name */}
+          <p className="text-lg font-bold">
+            Trending Now - <span className="text-gray-300">English</span>
+          </p>
+          {/* category name */}
+
+          {/* category item */}
+          <div className="grid grid-cols-2 gap-x-4 xs:grid-cols-3 md:grid-cols-4 lg:flex lg:flex-wrap lg:justify-center lg:gap-6">
+            {data.map((item) => (
+              <MovieCard {...item} key={item.id} />
+            ))}
+          </div>
+          {/* category item */}
         </div>
       </main>
     </div>
