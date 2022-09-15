@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import Link from "next/link";
 
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
@@ -39,13 +40,13 @@ export default function Dropdown({ title }: DropdownProps) {
             <Menu.Item>
               {({ active }) => (
                 <a
-                  href="/home"
+                  href="#"
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                     "block px-4 py-2 text-sm"
                   )}
                 >
-                  Home
+                  Account Settings
                 </a>
               )}
             </Menu.Item>

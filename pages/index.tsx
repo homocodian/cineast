@@ -1,12 +1,13 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Link from "next/link";
 
 import { Dropdown, Menu } from "../components";
 import SearchIcon from "../assets/icons/Search.svg";
 import MovieCard from "../components/MovieCard";
 import useData from "../hooks/useData";
 
-const Home: NextPage = () => {
+const LandingPage: NextPage = () => {
   const data = useData();
 
   return (
@@ -27,21 +28,21 @@ const Home: NextPage = () => {
             <div className="brand font-playfair text-lg font-medium">
               Cineast
             </div>
-            <div className="item-center flex justify-center gap-4">
-              <a
+            <div className="flex items-center justify-center gap-4">
+              <Link
                 href="/home"
-                className="hidden w-full justify-center rounded-md px-1 py-2 text-sm font-medium text-gray-700 focus:outline-none md:inline-flex"
+                className="hidden w-full items-center justify-center rounded-md px-1 py-2 text-sm font-medium text-gray-700 focus:outline-none md:inline-flex"
               >
                 Home
-              </a>
+              </Link>
               <Dropdown title="Explore" />
               <Dropdown title="Community" />
-              <a
+              <Link
                 href="/watch"
-                className="hidden w-full justify-center rounded-md px-1 py-2 text-sm font-medium text-gray-700 focus:outline-none md:inline-flex"
+                className="hidden w-full items-center justify-center rounded-md px-1 py-2 text-sm font-medium text-gray-700 focus:outline-none md:inline-flex"
               >
                 Watch
-              </a>
+              </Link>
             </div>
           </div>
           <div className="flex items-center justify-center gap-4">
@@ -88,4 +89,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default LandingPage;

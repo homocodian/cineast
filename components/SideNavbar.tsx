@@ -11,6 +11,7 @@ import DocumentIcon from "../assets/icons/Document.svg";
 import MoreIcon from "../assets/icons/More.svg";
 import PlayIcon from "../assets/icons/Play.svg";
 import Users from "../assets/icons/3 User.svg";
+import Link from "next/link";
 
 function SideNavbar() {
   const router = useRouter();
@@ -27,19 +28,18 @@ function SideNavbar() {
           </p>
           <div className="mt-4 flex flex-col">
             {/* home */}
-            <a
-              className="inline-flex w-full cursor-pointer flex-row items-center gap-2 rounded-md px-2 py-2 hover:bg-gray-100"
-              href="/home"
-            >
-              <HomeIcon height={15} width={15} />
-              <span
-                className={`text-sm ${
-                  router.pathname == "/home" ? "font-semibold" : ""
-                }`}
-              >
-                Home
-              </span>
-            </a>
+            <Link href="/home">
+              <a className="inline-flex w-full cursor-pointer flex-row items-center gap-2 rounded-md px-2 py-2 hover:bg-gray-100">
+                <HomeIcon height={15} width={15} />
+                <span
+                  className={`text-sm ${
+                    router.pathname == "/home" ? "font-semibold" : ""
+                  }`}
+                >
+                  Home
+                </span>
+              </a>
+            </Link>
             {/* Community */}
             <a
               className="inline-flex w-full cursor-pointer flex-row items-center gap-2 rounded-md px-2 py-2 hover:bg-gray-100"

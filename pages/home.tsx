@@ -1,5 +1,4 @@
-import React from "react";
-
+import { NextPage } from "next";
 import {
   SideNavbar,
   Carousel,
@@ -7,12 +6,11 @@ import {
   MovieCard,
   Chart,
   StreamingNow,
-  Tabs,
   TrendingHashTags,
 } from "../components";
 import useData from "../hooks/useData";
 
-const categories: Tabs.Categories = {
+const categories = {
   Today: Array.from(Array(6).keys()).map((item, index) => ({
     id: index,
     title: `Random name from today nice awesome name with awesome content ${item}`,
@@ -49,7 +47,7 @@ const FakeData = [
   },
 ];
 
-function Home() {
+const Home: NextPage = () => {
   const data = useData();
 
   return (
@@ -85,6 +83,6 @@ function Home() {
       </div>
     </div>
   );
-}
+};
 
 export default Home;

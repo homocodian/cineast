@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import Link from "next/link";
 
 import { Menu as DefaultMenu, Transition } from "@headlessui/react";
 import { Bars4Icon } from "@heroicons/react/20/solid";
@@ -29,7 +30,7 @@ export default function Menu() {
           <div className="py-1">
             <DefaultMenu.Item>
               {({ active }) => (
-                <a
+                <Link
                   href="/home"
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
@@ -37,7 +38,7 @@ export default function Menu() {
                   )}
                 >
                   Home
-                </a>
+                </Link>
               )}
             </DefaultMenu.Item>
             <DefaultMenu.Item>
