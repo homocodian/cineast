@@ -32,6 +32,7 @@ export default function Menu() {
               {({ active }) => (
                 <Link
                   href="/home"
+                  legacyBehavior={false}
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                     "block px-4 py-2 text-sm"
@@ -43,28 +44,30 @@ export default function Menu() {
             </DefaultMenu.Item>
             <DefaultMenu.Item>
               {({ active }) => (
-                <a
+                <Link
                   href="/explore"
+                  legacyBehavior={false}
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                     "block px-4 py-2 text-sm"
                   )}
                 >
                   Explore
-                </a>
+                </Link>
               )}
             </DefaultMenu.Item>
             <DefaultMenu.Item>
               {({ active }) => (
-                <a
+                <Link
                   href="/community"
+                  legacyBehavior={false}
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                     "block px-4 py-2 text-sm"
                   )}
                 >
                   Community
-                </a>
+                </Link>
               )}
             </DefaultMenu.Item>
             <form method="POST" action="#">

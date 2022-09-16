@@ -23,9 +23,13 @@ function SideNavbar() {
           <Bars4Icon className="block h-6 w-6 md:hidden" aria-hidden="true" />
         </Disclosure.Button>
         <div className="peer-transition fixed top-0 -left-full z-40 h-screen w-1/2 border-r bg-white p-6 delay-150 duration-200 ease-out peer-focus:left-0 md:left-0 md:w-60 lg:bg-[#F7F7F7]">
-          <p className="flex items-center justify-center py-4 font-playfair text-xl font-semibold capitalize">
+          <Link
+            href="/"
+            legacyBehavior={false}
+            className="flex items-center justify-center py-4 font-playfair text-xl font-semibold capitalize"
+          >
             cineast
-          </p>
+          </Link>
           <div className="mt-4 flex flex-col">
             {/* home */}
             <Link href="/home">

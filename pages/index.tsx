@@ -25,12 +25,17 @@ const LandingPage: NextPage = () => {
         {/* navbar */}
         <div className="navbar flex h-16 items-center justify-between bg-custom-cyan pl-8 pr-8">
           <div className="flex items-center justify-center gap-4">
-            <div className="brand font-playfair text-lg font-medium">
+            <Link
+              href="/"
+              legacyBehavior={false}
+              className="brand font-playfair text-lg font-medium"
+            >
               Cineast
-            </div>
+            </Link>
             <div className="flex items-center justify-center gap-4">
               <Link
                 href="/home"
+                legacyBehavior={false}
                 className="hidden w-full items-center justify-center rounded-md px-1 py-2 text-sm font-medium text-gray-700 focus:outline-none md:inline-flex"
               >
                 Home
@@ -39,6 +44,7 @@ const LandingPage: NextPage = () => {
               <Dropdown title="Community" />
               <Link
                 href="/watch"
+                legacyBehavior={false}
                 className="hidden w-full items-center justify-center rounded-md px-1 py-2 text-sm font-medium text-gray-700 focus:outline-none md:inline-flex"
               >
                 Watch
