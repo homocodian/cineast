@@ -1,6 +1,6 @@
 {
   "name": "cineast",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,26 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.0",
-    "@heroicons/react": "^2.0.10",
-    "next": "12.3.0",
-    "pure-react-carousel": "^1.29.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "@headlessui/react": "^1.7.4",
+    "@heroicons/react": "^2.0.13",
+    "next": "^13.0.2",
+    "pure-react-carousel": "^1.30.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@svgr/webpack": "^6.3.1",
-    "@types/node": "18.7.16",
-    "@types/react": "18.0.18",
-    "@types/react-dom": "18.0.6",
-    "autoprefixer": "^10.4.8",
-    "eslint": "8.23.0",
-    "eslint-config-next": "12.3.0",
-    "postcss": "^8.4.16",
+    "@svgr/webpack": "^6.5.1",
+    "@types/node": "^18.11.9",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.8",
+    "autoprefixer": "^10.4.13",
+    "eslint": "^8.26.0",
+    "eslint-config-next": "^13.0.2",
+    "postcss": "^8.4.18",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
     "tailwind-scrollbar-hide": "^1.1.7",
     "tailwindcss": "^3.1.8",
-    "typescript": "4.8.3"
+    "typescript": "^4.8.4"
   }
 }

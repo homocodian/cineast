@@ -1,4 +1,4 @@
-import { Card, Tabs } from "../";
+import { Card, Tabs } from "..";
 import TickertStar from "../../assets/icons/Ticket Star.svg";
 
 interface IProps {

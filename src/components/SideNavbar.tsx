@@ -1,17 +1,18 @@
-import React from "react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 import { Disclosure } from "@headlessui/react";
 import { Bars4Icon } from "@heroicons/react/20/solid";
 
-import HomeIcon from "../assets/icons/Home.svg";
-import ProfileIcon from "../assets/icons/Profile.svg";
-import ChartIcon from "../assets/icons/Chart.svg";
-import DocumentIcon from "../assets/icons/Document.svg";
-import MoreIcon from "../assets/icons/More.svg";
-import PlayIcon from "../assets/icons/Play.svg";
-import Users from "../assets/icons/3 User.svg";
-import Link from "next/link";
+import {
+  HomeIcon,
+  ProfileIcon,
+  ChartIcon,
+  DocumentIcon,
+  MoreIcon,
+  PlayIcon,
+  UsersIcon,
+} from "../assets/icons";
 
 function SideNavbar() {
   const router = useRouter();
@@ -32,24 +33,25 @@ function SideNavbar() {
           </Link>
           <div className="mt-4 flex flex-col">
             {/* home */}
-            <Link href="/home">
-              <a className="inline-flex w-full cursor-pointer flex-row items-center gap-2 rounded-md px-2 py-2 hover:bg-gray-100">
-                <HomeIcon height={15} width={15} />
-                <span
-                  className={`text-sm ${
-                    router.pathname == "/home" ? "font-semibold" : ""
-                  }`}
-                >
-                  Home
-                </span>
-              </a>
+            <Link
+              href="/home"
+              className="inline-flex w-full cursor-pointer flex-row items-center gap-2 rounded-md px-2 py-2 hover:bg-gray-100"
+            >
+              <HomeIcon height={15} width={15} />
+              <span
+                className={`text-sm ${
+                  router.pathname == "/home" ? "font-semibold" : ""
+                }`}
+              >
+                Home
+              </span>
             </Link>
             {/* Community */}
-            <a
+            <Link
               className="inline-flex w-full cursor-pointer flex-row items-center gap-2 rounded-md px-2 py-2 hover:bg-gray-100"
               href="/community"
             >
-              <Users height={15} width={15} />
+              <UsersIcon height={15} width={15} />
               <span
                 className={`text-sm ${
                   router.pathname == "/community" ? "font-semibold" : ""
@@ -57,9 +59,9 @@ function SideNavbar() {
               >
                 Community
               </span>
-            </a>
+            </Link>
             {/* Recommendations */}
-            <a
+            <Link
               className="inline-flex w-full cursor-pointer flex-row items-center gap-2 rounded-md px-2 py-2 hover:bg-gray-100"
               href="/recommendations"
             >
@@ -71,9 +73,9 @@ function SideNavbar() {
               >
                 Recommendations
               </span>
-            </a>
+            </Link>
             {/* Reels */}
-            <a
+            <Link
               className="inline-flex w-full cursor-pointer flex-row items-center gap-2 rounded-md px-2 py-2 hover:bg-gray-100"
               href="/reels"
             >
@@ -85,9 +87,9 @@ function SideNavbar() {
               >
                 Reels
               </span>
-            </a>
+            </Link>
             {/* Lists */}
-            <a
+            <Link
               className="inline-flex w-full cursor-pointer flex-row items-center gap-2 rounded-md px-2 py-2 hover:bg-gray-100"
               href="/lists"
             >
@@ -99,9 +101,9 @@ function SideNavbar() {
               >
                 Lists
               </span>
-            </a>
+            </Link>
             {/* profile */}
-            <a
+            <Link
               className="inline-flex w-full cursor-pointer flex-row items-center gap-2 rounded-md px-2 py-2 hover:bg-gray-100"
               href="/profile"
             >
@@ -113,9 +115,9 @@ function SideNavbar() {
               >
                 Profile
               </span>
-            </a>
+            </Link>
             {/* more */}
-            <a
+            <Link
               className="inline-flex w-full cursor-pointer flex-row items-center gap-2 rounded-md px-2 py-2 hover:bg-gray-100"
               href="/more"
             >
@@ -127,7 +129,7 @@ function SideNavbar() {
               >
                 More
               </span>
-            </a>
+            </Link>
             {/* post */}
             <div className="mt-8 inline-flex w-full items-center justify-center">
               <button className="rounded-full bg-black px-10 py-2 capitalize text-white">

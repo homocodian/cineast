@@ -1,0 +1,10 @@
+export { default as UsersIcon } from "./3 User.svg";
+export { default as ActivityIcon } from "./Activity.svg";
+export { default as ChartIcon } from "./Chart.svg";
+export { default as DocumentIcon } from "./Document.svg";
+export { default as HomeIcon } from "./Home.svg";
+export { default as MoreIcon } from "./More.svg";
+export { default as PlayIcon } from "./Play.svg";
+export { default as ProfileIcon } from "./Profile.svg";
+export { default as SearchIcon } from "./Search.svg";
+export { default as TicketStarIcon } from "./Ticket Star.svg";

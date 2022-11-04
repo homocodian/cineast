@@ -1,6 +1,6 @@
-import React from "react";
+import Link from "next/link";
 
-import { Searchbar } from "./";
+import { Searchbar } from ".";
 
 function Navbar() {
   return (
@@ -8,27 +8,27 @@ function Navbar() {
       <Searchbar />
       <ul className="flex items-center justify-center gap-4 overflow-hidden text-xs md:text-base">
         <li className="inline-block overflow-hidden text-ellipsis whitespace-nowrap">
-          <a href="/movies" className="capitalize">
+          <Link href="/movies" className="capitalize">
             Movies
-          </a>
+          </Link>
         </li>
         <li className="inline-block overflow-hidden text-ellipsis whitespace-nowrap">
-          <a href="/tvshows" className="capitalize">
+          <Link href="/tvshows" className="capitalize">
             Tv Shows
-          </a>
+          </Link>
         </li>
         <li className="inline-block overflow-hidden text-ellipsis whitespace-nowrap">
-          <a href="/news" className="capitalize">
+          <Link href="/news" className="capitalize">
             News
-          </a>
+          </Link>
         </li>
         <li className="inline-block overflow-hidden text-ellipsis whitespace-nowrap">
-          <a
+          <Link
             href="streamparties"
             className="overflow-hidden text-ellipsis whitespace-nowrap capitalize"
           >
             Stream Parties
-          </a>
+          </Link>
         </li>
       </ul>
     </div>

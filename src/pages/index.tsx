@@ -3,9 +3,9 @@ import Head from "next/head";
 import Link from "next/link";
 
 import { Dropdown, Menu } from "../components";
-import SearchIcon from "../assets/icons/Search.svg";
-import MovieCard from "../components/MovieCard";
-import useData from "../hooks/useData";
+import { SearchIcon } from "@assets/icons";
+import MovieCard from "@components/MovieCard";
+import useData from "@hooks/useData";
 
 const LandingPage: NextPage = () => {
   const data = useData();
