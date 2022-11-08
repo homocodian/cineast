@@ -20,6 +20,11 @@ function MovieCard({ title, imageUrl, likes }: IProps) {
 					alt={title}
 					crossOrigin="anonymous"
 					fill
+					sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+					placeholder="blur"
+					blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPceGBjPQAG7wKj+4Z4jAAAAABJRU5ErkJggg=="
 				/>
 			</div>
 			<div className="mt-1 px-1">
