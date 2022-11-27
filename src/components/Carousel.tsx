@@ -1,6 +1,6 @@
 import { CSSProperties, ReactNode, useRef } from "react";
 
-import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 
 import { usePosition } from "../hooks/usePosition";
 
@@ -52,7 +52,7 @@ function Corousel({
 					onClick={scrollLeft}
 					style={buttonStyle}
 				>
-					<HiChevronLeft className="h-5 w-5 text-black" />
+					<ChevronLeftIcon className="h-5 w-5 text-black" />
 				</span>
 			</div>
 			<div
@@ -73,7 +73,7 @@ function Corousel({
 					onClick={scrollRight}
 					style={buttonStyle}
 				>
-					<HiChevronRight className="h-5 w-5 text-black" />
+					<ChevronRightIcon className="h-5 w-5 text-black" />
 				</span>
 			</div>
 		</div>
