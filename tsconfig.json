@@ -18,7 +18,10 @@
 		"paths": {
 			"@components/*": ["src/components/*"],
 			"@hooks/*": ["src/hooks/*"],
-			"@assets/*": ["src/assets/*"]
+			"@assets/*": ["src/assets/*"],
+			"@customTypes/*": ["src/types/*"],
+			"@constants/*": ["src/constants/*"],
+			"@utils/*": ["src/utils/*"]
 		}
 	},
 	"include": [

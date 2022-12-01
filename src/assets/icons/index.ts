@@ -8,3 +8,4 @@ export { default as PlayIcon } from "./Play.svg";
 export { default as ProfileIcon } from "./Profile.svg";
 export { default as SearchIcon } from "./Search.svg";
 export { default as TicketStarIcon } from "./Ticket Star.svg";
+export { default as Critics } from "./Critics.svg";

@@ -7,6 +7,7 @@ const nextConfig = {
 			"pbs.twimg.com",
 			"lh3.googleusercontent.com",
 			"source.unsplash.com",
+			"image.tmdb.org",
 		],
 	},
 	webpack: (config) => {

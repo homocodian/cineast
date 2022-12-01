@@ -14,7 +14,7 @@ function Navbar() {
 	const router = useRouter();
 
 	return (
-		<div className="navbar flex h-16 items-center justify-between bg-custom-cyan pl-8 pr-8">
+		<div className="navbar flex h-16 items-center justify-between bg-custom-cyan pl-8 pr-8 text-black">
 			<div className="flex items-center justify-center gap-4">
 				<Link
 					href="/"
@@ -34,11 +34,11 @@ function Navbar() {
 					<Dropdown title="Explore" />
 					<Dropdown title="Community" />
 					<Link
-						href="/watch"
+						href="/movies/1"
 						legacyBehavior={false}
 						className="hidden w-full items-center justify-center rounded-md px-1 py-2 text-sm font-medium text-gray-700 focus:outline-none md:inline-flex"
 					>
-						Watch
+						Movie
 					</Link>
 				</div>
 			</div>

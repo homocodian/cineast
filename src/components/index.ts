@@ -10,3 +10,5 @@ export * as Tabs from "./Tabs";
 export { default as Chart } from "./cards/Chart";
 export { default as StreamingNow } from "./cards/StreamingNow";
 export { default as TrendingHashTags } from "./cards/TrendingHashTags";
+export { default as UserImage } from "./profile/UserImage";
+export { default as Container } from "./Container";
