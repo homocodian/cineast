@@ -32,7 +32,7 @@ const Movie: NextPage<{ data: Movie }> = ({ data }) => {
 							<MagnifyingGlassIcon className="h-5 w-5 self-center text-muted" />
 							<input
 								type="text"
-								className="bg-transparent outline-none placeholder:text-muted"
+								className="w-28 bg-transparent outline-none placeholder:text-muted xs:w-full"
 								placeholder="Search..."
 							/>
 						</div>
@@ -61,7 +61,7 @@ const Movie: NextPage<{ data: Movie }> = ({ data }) => {
 												alt={data.results[0].title}
 												width={100}
 												height={140}
-												className="absolute top-1/2 rounded-md md:top-[60%]"
+												className="absolute top-[40%] rounded-md xs:top-1/2 md:top-[60%]"
 											/>
 
 											{/* movie info */}
