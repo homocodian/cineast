@@ -11,7 +11,7 @@ function classNames(...classes: string[]) {
 
 function Container({ children, className }: ContainerProps) {
 	return (
-		<div className={classNames("mx-auto max-w-5xl", className ?? "")}>
+		<div className={classNames("mx-auto max-w-6xl", className ?? "")}>
 			{children}
 		</div>
 	);

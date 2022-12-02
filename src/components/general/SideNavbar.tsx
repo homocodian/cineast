@@ -15,29 +15,33 @@ interface LinkIconProps {
 	icon: ReactNode;
 }
 
-const links: LinkIconProps[] = [
+export const links: LinkIconProps[] = [
 	{
 		title: "Home",
-		href: "/home",
-		icon: <HomeIcon className="h-5 w-5 text-white peer-hover:text-black" />,
+		href: "/",
+		icon: (
+			<HomeIcon className="h-5 w-5 text-white peer-hover:text-black lg:h-7 lg:w-7" />
+		),
 	},
 	{
 		title: "Explore",
 		href: "/explore",
 		icon: (
-			<MdOutlineExplore className="h-5 w-5 text-white peer-hover:text-black" />
+			<MdOutlineExplore className="h-5 w-5 text-white peer-hover:text-black lg:h-7 lg:w-7" />
 		),
 	},
 	{
 		title: "Notifications",
 		href: "/notifications",
-		icon: <BellIcon className="h-5 w-5 text-white peer-hover:text-black" />,
+		icon: (
+			<BellIcon className="h-5 w-5 text-white peer-hover:text-black lg:h-7 lg:w-7" />
+		),
 	},
 	{
 		title: "Catagory",
 		href: "/category",
 		icon: (
-			<Squares2X2Icon className="h-5 w-5 text-white peer-hover:text-black" />
+			<Squares2X2Icon className="h-5 w-5 text-white peer-hover:text-black lg:h-7 lg:w-7" />
 		),
 	},
 ];
@@ -45,7 +49,7 @@ const links: LinkIconProps[] = [
 function SideNavbar() {
 	return (
 		<div className="flex h-screen items-center justify-center">
-			<div className="flex flex-col gap-2">
+			<div className="flex flex-col gap-3">
 				{links.map(({ title, href, icon }) => (
 					<IconLink key={title} title={title} href={href} icon={icon} />
 				))}
@@ -54,7 +58,7 @@ function SideNavbar() {
 					title="Create Post"
 					href="/create-post"
 					icon={
-						<PencilSquareIcon className="h-5 w-5 text-white peer-hover:text-black" />
+						<PencilSquareIcon className="h-5 w-5 text-white peer-hover:text-black lg:h-7 lg:w-7" />
 					}
 				/>
 			</div>
@@ -69,7 +73,7 @@ function IconLink({ href, icon, title }: LinkIconProps) {
 		<Link href={href}>
 			<div
 				title={title}
-				className="peer inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full hover:bg-light-dark"
+				className="peer inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-full hover:bg-light-dark"
 			>
 				{icon}
 			</div>

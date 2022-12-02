@@ -15,7 +15,7 @@ function SignIn() {
 
 	return (
 		<div className="m-auto flex h-screen justify-center">
-			<div className="m-auto h-screen w-full bg-dark-card px-8 py-6 sm:h-[550px] sm:w-[420px] sm:rounded-md">
+			<div className="m-auto h-screen w-full bg-dark-card px-8 sm:h-[550px] sm:w-[420px] sm:rounded-md">
 				<div className="my-auto flex h-screen flex-col justify-center gap-8 sm:h-full">
 					<Image
 						src="/logo.svg"
@@ -23,8 +23,9 @@ function SignIn() {
 						width={72}
 						alt="cineast"
 						className="self-center"
+						priority
 					/>
-					<h2 className="text-center uppercase">Cineast</h2>
+					<h2 className="text-center font-semibold uppercase">Cineast</h2>
 					<div className="space-y-1">
 						<h1 className="text-center text-lg font-semibold capitalize">
 							Create your account
