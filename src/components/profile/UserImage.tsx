@@ -9,7 +9,7 @@ function UserImage() {
 		<div className="h-10 w-10 animate-pulse rounded-full bg-light-dark" />
 	) : status === "unauthenticated" ? (
 		<button
-			className="hidden border-none outline-none md:inline-block"
+			className="border-none outline-none md:inline-block"
 			onClick={() => signIn()}
 		>
 			Log in

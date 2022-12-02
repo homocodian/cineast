@@ -38,7 +38,7 @@ const Movie: NextPage<{ data: Movie }> = ({ data }) => {
 						</div>
 						<UserImage />
 					</header>
-					<div className="mt-12 flex gap-4">
+					<div className="mt-6 flex gap-4 md:mt-10">
 						<main className="flex-grow">
 							{data?.success && data?.results?.length > 0 ? (
 								<>
@@ -54,32 +54,37 @@ const Movie: NextPage<{ data: Movie }> = ({ data }) => {
 											/>
 										</div>
 
-										<div className="ml-6 flex">
+										<div className="ml-1 flex xs:ml-2 sm:ml-3">
 											{/* poster */}
-											<Image
-												src={`${baseImageUrl}/w154/${data.results[0].poster_path}`}
-												alt={data.results[0].title}
-												width={100}
-												height={140}
-												className="absolute top-[40%] rounded-md xs:top-1/2 md:top-[60%]"
-											/>
+											<div className="h-[140px] w-[100px]">
+												<Image
+													src={`${baseImageUrl}/w154/${data.results[0].poster_path}`}
+													alt={data.results[0].title}
+													width={100}
+													height={140}
+													className="absolute top-[50%] rounded-md xs:top-1/2 md:top-[60%]"
+												/>
+											</div>
 
 											{/* movie info */}
-											<div className="ml-28 mt-2 flex flex-col gap-2 md:ml-32">
+											<div className="ml-4 mt-3 flex flex-col gap-2">
 												{/* title & release year */}
 												<div className="flex gap-2">
-													<h1 className="text-sm font-semibold uppercase">
+													<h1
+														title={data.results[0].title}
+														className="w-[70%] truncate text-sm font-semibold uppercase sm:w-auto"
+													>
 														{data.results[0].title}
 													</h1>
 													<h2 className="text-sm font-semibold uppercase">
 														{`(${data.results[0].release_date.split("-")[0]})`}
 													</h2>
 												</div>
-												<div className="flex gap-8">
+												<div className="flex gap-4">
 													<div className="flex flex-col gap-2">
 														{/* genres & runtime */}
 														<div className="flex gap-2">
-															<p className="text-sm font-normal">
+															<p className="w-[70%] truncate text-sm font-normal md:w-auto">
 																{data.results[0]?.genres?.results
 																	.map(({ name }) => name)
 																	.join("/ ")}
@@ -92,53 +97,51 @@ const Movie: NextPage<{ data: Movie }> = ({ data }) => {
 														</div>
 
 														{/* available platforms */}
-														<div className="flex gap-1">
-															<span className="text-xs text-muted">
-																Available on
-															</span>
-															<ul className="flex flex-wrap gap-2">
-																{Array.from(
-																	new Set(
-																		data.results[0].providers?.results.map(
-																			({ logo }) => logo
-																		)
-																	)
-																).map((logo) => (
-																	<li key={logo} className="self-center">
-																		<Image
-																			src={`${baseImageUrl}/w45/${logo}`}
-																			alt={logo}
-																			width={20}
-																			height={20}
-																		/>
-																	</li>
-																))}
-															</ul>
-														</div>
+														{data.results[0]?.providers?.results?.length > 0 ? (
+															<div className="flex gap-1">
+																<span className="text-xs text-muted">
+																	Available on
+																</span>
+																<div className="ml-2 self-center">
+																	<Image
+																		src={`${baseImageUrl}/w45/${data.results[0].providers.results[0].logo}`}
+																		alt={
+																			data.results[0].providers.results[0].logo
+																		}
+																		width={20}
+																		height={20}
+																	/>
+																</div>
+															</div>
+														) : null}
 													</div>
 													{/* votes */}
 													<div className="hidden gap-2 sm:flex">
 														{/* critics vote */}
-														<div className="flex gap-1">
-															<Critics width={20} height={30} />
-															<div>
+														<div className="flex flex-col gap-1">
+															<div className="flex gap-2">
+																<Critics width={20} height={20} />
 																<p className="self-center font-semibold">60%</p>
-																<p className="text-xs text-muted">Critics</p>
 															</div>
+															<p className="text-center text-xs font-semibold text-muted">
+																Critics
+															</p>
 														</div>
 
 														{/* divider */}
 														<div className="border border-light-dark" />
 
 														{/* audience vote */}
-														<div className="flex gap-1">
-															<HeartIcon className="h-5 w-5 text-red-500" />
-															<div>
+														<div className="flex flex-col gap-1">
+															<div className="flex gap-2">
+																<HeartIcon className="h-5 w-5 text-red-500" />
 																<p className="self-center font-semibold">{`${
 																	Math.floor(data.results[0].popularity) ?? 0
 																}%`}</p>
-																<p className="text-xs text-muted">Audience</p>
 															</div>
+															<p className="text-center text-xs font-semibold text-muted">
+																Audience
+															</p>
 														</div>
 													</div>
 												</div>

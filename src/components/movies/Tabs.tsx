@@ -14,7 +14,7 @@ interface IProps {
 
 function Tabs({ tabs }: IProps) {
 	return (
-		<div className="w-full px-2 py-12 sm:px-0">
+		<div className="w-full px-2 py-6 sm:px-0">
 			<Tab.Group>
 				<Tab.List className="flex space-x-8 rounded-xl p-1">
 					{Object.keys(tabs).map((category) => (
