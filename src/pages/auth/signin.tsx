@@ -1,4 +1,5 @@
 import { signIn, SignInOptions } from "next-auth/react";
+import Image from "next/image";
 import { useRouter } from "next/router";
 
 import { FcGoogle } from "react-icons/fc";
@@ -13,9 +14,16 @@ function SignIn() {
 	const router = useRouter();
 
 	return (
-		<div className="grid h-screen w-full sm:place-content-center">
-			<div className="h-screen w-full bg-dark-card px-8 py-6 sm:h-auto sm:rounded">
-				<div className="flex flex-col gap-8">
+		<div className="m-auto flex h-screen justify-center">
+			<div className="m-auto h-screen w-full bg-dark-card px-8 py-6 sm:h-[550px] sm:w-[420px] sm:rounded-md">
+				<div className="my-auto flex h-screen flex-col justify-center gap-8 sm:h-full">
+					<Image
+						src="/logo.svg"
+						height={72}
+						width={72}
+						alt="cineast"
+						className="self-center"
+					/>
 					<h2 className="text-center uppercase">Cineast</h2>
 					<div className="space-y-1">
 						<h1 className="text-center text-lg font-semibold capitalize">
