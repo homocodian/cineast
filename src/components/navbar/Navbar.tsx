@@ -66,11 +66,7 @@ function Navbar() {
 						<button
 							className="hidden border-none outline-none md:inline-block"
 							onClick={() => {
-								if (status === "unauthenticated") {
-									signIn();
-								} else {
-									router.push("/auth/signin");
-								}
+								router.push(`/auth/signin?callbackUrl=${router.asPath}`);
 							}}
 						>
 							Log in

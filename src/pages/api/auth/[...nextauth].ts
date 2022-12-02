@@ -1,9 +1,9 @@
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 
 import GoogleProvider from "next-auth/providers/google";
 import TwitterProvider from "next-auth/providers/twitter";
 
-export const authOptions = {
+export const authOptions: NextAuthOptions = {
 	// Configure one or more authentication providers
 	providers: [
 		GoogleProvider({
@@ -15,6 +15,9 @@ export const authOptions = {
 			clientSecret: process.env.TWITTER_CLIENT_SECRET as string,
 		}),
 	],
+	pages: {
+		signIn: "/auth/signin",
+	},
 };
 
 export default NextAuth(authOptions);

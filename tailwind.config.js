@@ -19,6 +19,7 @@ module.exports = {
 				"custom-cyan": "#D4FFF2",
 				"cineast-yellow": "#FA8D0C",
 				"light-dark": "#202020",
+				"dark-card": "#212529",
 			},
 			fontFamily: {
 				sans: ["var(--font-inter)"],

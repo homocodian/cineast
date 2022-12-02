@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { signIn, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 function UserImage() {
 	const { data, status } = useSession();
@@ -15,7 +15,7 @@ function UserImage() {
 			Log in
 		</button>
 	) : (
-		<div>
+		<div className="cursor-pointer" onClick={() => signOut()}>
 			<Image
 				alt="profile"
 				src={data?.user?.image!}

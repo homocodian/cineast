@@ -74,6 +74,19 @@ export default function Menu() {
 						<DefaultMenu.Item>
 							{({ active }) => (
 								<Link
+									href="/movies/1359"
+									className={classNames(
+										active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+										"block px-4 py-2 text-sm"
+									)}
+								>
+									Movie
+								</Link>
+							)}
+						</DefaultMenu.Item>
+						<DefaultMenu.Item>
+							{({ active }) => (
+								<Link
 									href="/explore"
 									legacyBehavior={false}
 									className={classNames(
