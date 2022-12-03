@@ -67,7 +67,7 @@ function UserMenu() {
 									className={`${
 										active ? "bg-gray-100 text-gray-900" : "text-white"
 									} group flex w-full items-center rounded-md px-4 py-2 text-sm`}
-									onClick={() => signOut()}
+									onClick={() => signOut({ redirect: false })}
 								>
 									Logout
 								</button>
