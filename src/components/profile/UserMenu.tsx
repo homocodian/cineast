@@ -31,7 +31,7 @@ function UserMenu() {
 						alt={data?.user?.name ?? "Profile"}
 						width={38}
 						height={38}
-						className="h-[24px] w-[24px] rounded-full sm:h-[38px] sm:w-[38px] "
+						className="h-[28px] w-[28px] rounded-full sm:h-[38px] sm:w-[38px] "
 					/>
 				</Menu.Button>
 			</div>
