@@ -15,22 +15,24 @@ function SignIn() {
 
 	return (
 		<div className="m-auto flex h-screen justify-center">
-			<div className="m-auto h-screen w-full bg-dark-card px-8 sm:h-[550px] sm:w-[420px] sm:rounded-md">
-				<div className="my-auto flex h-screen flex-col justify-center gap-8 sm:h-full">
-					<Image
-						src="/logo.svg"
-						height={72}
-						width={72}
-						alt="cineast"
-						className="self-center"
-						priority
-					/>
-					<h2 className="text-center font-semibold uppercase">Cineast</h2>
+			<div className="m-auto h-screen w-full bg-dark-card px-8 sm:h-[500px] sm:w-[420px] sm:rounded-md">
+				<div className="my-auto flex h-screen flex-col justify-center gap-6 sm:h-full">
+					<div className="flex flex-col space-y-4">
+						<Image
+							src="/logo.svg"
+							height={72}
+							width={72}
+							alt="cineast"
+							className="self-center"
+							priority
+						/>
+						<h2 className="text-center font-semibold uppercase">Cineast</h2>
+					</div>
 					<div className="space-y-1">
-						<h1 className="text-center text-lg font-semibold capitalize">
-							Create your account
+						<h1 className="text-center text-lg font-semibold capitalize tracking-widest">
+							Welcome back!
 						</h1>
-						<h3 className="text-center">Sign up to continue.</h3>
+						<h3 className="text-center">Choose your login method</h3>
 					</div>
 					<div>
 						<button
