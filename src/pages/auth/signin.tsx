@@ -5,13 +5,16 @@ import { useRouter } from "next/router";
 import { FcGoogle } from "react-icons/fc";
 import { IoLogoTwitter } from "react-icons/io";
 
-interface Login {
-	providers: "google" | "twitter";
-	options: SignInOptions;
-}
+export type TProviders = "google" | "twitter";
 
 function SignIn() {
 	const router = useRouter();
+
+	const login = (provider: TProviders) => {
+		signIn(provider, {
+			callbackUrl: router.query.callbackUrl as string,
+		});
+	};
 
 	return (
 		<div className="m-auto flex h-screen justify-center">
@@ -36,11 +39,7 @@ function SignIn() {
 					</div>
 					<div>
 						<button
-							onClick={() =>
-								signIn("google", {
-									callbackUrl: router.query.callbackUrl as string,
-								})
-							}
+							onClick={() => login("google")}
 							className="inline-flex w-full items-center justify-center gap-4 rounded-md bg-white px-6 py-4"
 						>
 							<FcGoogle className="h-7 w-7" />
@@ -54,11 +53,7 @@ function SignIn() {
 							<div className="flex-grow border-t border-gray-400"></div>
 						</div>
 						<button
-							onClick={() =>
-								signIn("twitter", {
-									callbackUrl: router.query.callbackUrl as string,
-								})
-							}
+							onClick={() => login("twitter")}
 							className="inline-flex w-full items-center justify-center gap-4 rounded-md bg-[#1DA1F2] px-6 py-4"
 						>
 							<IoLogoTwitter className="h-7 w-7" />
