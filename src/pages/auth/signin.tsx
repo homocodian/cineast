@@ -54,7 +54,7 @@ function SignIn() {
 						</div>
 						<button
 							onClick={() => login("twitter")}
-							className="inline-flex w-full items-center justify-center gap-4 rounded-md bg-[#1DA1F2] px-6 py-4"
+							className="inline-flex w-full items-center justify-center gap-4 rounded-md bg-twitter-blue px-6 py-4"
 						>
 							<IoLogoTwitter className="h-7 w-7" />
 							<span className="self-center">Continue with Twitter</span>

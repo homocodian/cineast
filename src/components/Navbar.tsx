@@ -1,12 +1,13 @@
 import Link from "next/link";
+import UserMenu from "./profile/UserMenu";
 
 import Searchbar from "./Searchbar";
 
 function Navbar() {
 	return (
-		<div className="ml-[48px] flex h-16 items-center gap-8 md:ml-0">
+		<div className="ml-[48px] mr-2 flex h-16 items-center gap-8 md:ml-0">
 			<Searchbar />
-			<ul className="flex items-center justify-center gap-4 overflow-hidden text-xs md:text-base">
+			<ul className="hidden items-center justify-center gap-4 overflow-hidden text-xs md:text-base lg:flex">
 				<li className="inline-block overflow-hidden text-ellipsis whitespace-nowrap">
 					<Link href="/movies" className="capitalize">
 						Movies
@@ -31,6 +32,11 @@ function Navbar() {
 					</Link>
 				</li>
 			</ul>
+			<div className="flex flex-grow justify-end">
+				<div className="w-10">
+					<UserMenu />
+				</div>
+			</div>
 		</div>
 	);
 }

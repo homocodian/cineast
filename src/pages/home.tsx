@@ -54,7 +54,7 @@ const Home: NextPage = () => {
 	const data = useData();
 
 	return (
-		<div className="relative flex h-screen flex-row bg-[#F7F7F7] xxxs:overflow-auto">
+		<div className="relative flex h-screen flex-row  xxxs:overflow-auto">
 			<SideNavbar />
 			<div className="absolute right-0 w-full py-1 md:w-[calc(100%-15rem)]">
 				<div className="pl-4 md:pl-6">

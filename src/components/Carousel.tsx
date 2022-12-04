@@ -35,7 +35,7 @@ function Corousel({
 			>
 				{children}
 			</div>
-			<div
+			<button
 				className="absolute top-0 bottom-0 left-1 flex items-center
         justify-center border-0 p-4 text-center 
         hover:no-underline hover:outline-none focus:no-underline focus:outline-none"
@@ -54,8 +54,8 @@ function Corousel({
 				>
 					<ChevronLeftIcon className="h-5 w-5 text-black" />
 				</span>
-			</div>
-			<div
+			</button>
+			<button
 				className="absolute top-0 bottom-0 
         right-1 flex items-center justify-center border-0
         p-4 text-center hover:no-underline 
@@ -75,7 +75,7 @@ function Corousel({
 				>
 					<ChevronRightIcon className="h-5 w-5 text-black" />
 				</span>
-			</div>
+			</button>
 		</div>
 	);
 }

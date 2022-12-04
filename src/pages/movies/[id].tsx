@@ -7,12 +7,12 @@ import { HeartIcon } from "@heroicons/react/20/solid";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 import { Critics } from "@assets/icons";
+import Tabs from "@components/movies/Tabs";
 import { Movie } from "@customTypes/MovieResponse";
-import { getMovieRuntimeInHours } from "@utils/index";
 import { baseImageUrl } from "@constants/baseImageUrl";
 import SideNavbar from "@components/general/SideNavbar";
 import { Container, UserMenu } from "@components/index";
-import Tabs from "@components/movies/Tabs";
+import { getMovieRuntimeInHours, shimmer, toBase64 } from "@utils/index";
 
 const Movie: NextPage<{ data: Movie }> = ({ data }) => {
 	return (
@@ -52,9 +52,11 @@ const Movie: NextPage<{ data: Movie }> = ({ data }) => {
 										src={`${baseImageUrl}/w780/${data.results[0].backdrop_path}`}
 										alt={data.results[0].title}
 										fill
+										placeholder="blur"
 										className="rounded object-cover"
-										priority
-										blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mPcXQ8AAfsBPNCqwHYAAAAASUVORK5CYII="
+										blurDataURL={`data:image/svg+xml;base64,${toBase64(
+											shimmer(700, 475)
+										)}`}
 									/>
 								</div>
 
@@ -67,6 +69,8 @@ const Movie: NextPage<{ data: Movie }> = ({ data }) => {
 												alt={data.results[0].title}
 												fill
 												className="rounded-xl"
+												priority
+												sizes="33vw"
 											/>
 										</div>
 									</div>

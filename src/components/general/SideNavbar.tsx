@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import Link from "next/link";
 
 import {
@@ -9,11 +8,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { MdOutlineExplore } from "react-icons/md";
 
-interface LinkIconProps {
-	title: string;
-	href: string;
-	icon: ReactNode;
-}
+import { LinkIconProps } from "@customTypes/Links";
 
 export const links: LinkIconProps[] = [
 	{
