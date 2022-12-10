@@ -11,3 +11,4 @@ export { default as SideNavbar } from "./SideNavbar";
 export { default as UserMenu } from "./profile/UserMenu";
 export { default as StreamingNow } from "./cards/StreamingNow";
 export { default as TrendingHashTags } from "./cards/TrendingHashTags";
+export { default as MovieSearchbar } from "./movies/MovieSearchbar";

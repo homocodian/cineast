@@ -1,43 +1,30 @@
 import Link from "next/link";
-import UserMenu from "./profile/UserMenu";
 
-import Searchbar from "./Searchbar";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+
+import UserMenu from "@components/profile/UserMenu";
 
 function Navbar() {
 	return (
-		<div className="ml-[48px] mr-2 flex h-16 items-center gap-8 md:ml-0">
-			<Searchbar />
-			<ul className="hidden items-center justify-center gap-4 overflow-hidden text-xs md:text-base lg:flex">
-				<li className="inline-block overflow-hidden text-ellipsis whitespace-nowrap">
-					<Link href="/movies" className="capitalize">
-						Movies
-					</Link>
-				</li>
-				<li className="inline-block overflow-hidden text-ellipsis whitespace-nowrap">
-					<Link href="/tvshows" className="capitalize">
-						Tv Shows
-					</Link>
-				</li>
-				<li className="inline-block overflow-hidden text-ellipsis whitespace-nowrap">
-					<Link href="/news" className="capitalize">
-						News
-					</Link>
-				</li>
-				<li className="inline-block overflow-hidden text-ellipsis whitespace-nowrap">
-					<Link
-						href="streamparties"
-						className="overflow-hidden text-ellipsis whitespace-nowrap capitalize"
-					>
-						Stream Parties
-					</Link>
-				</li>
-			</ul>
-			<div className="flex flex-grow justify-end">
-				<div className="w-10">
-					<UserMenu />
-				</div>
+		<nav className="mt-1 flex select-none items-center justify-between">
+			<div>
+				<Link
+					href="/home"
+					className="text-sm font-semibold uppercase sm:text-base"
+				>
+					Cineast
+				</Link>
 			</div>
-		</div>
+			<div className="flex gap-1 rounded-full border border-muted py-1 px-3 sm:py-2 md:gap-3 md:py-2 md:px-4">
+				<MagnifyingGlassIcon className="h-5 w-5 self-center text-muted" />
+				<input
+					type="text"
+					className="w-28 bg-transparent outline-none placeholder:text-muted xs:w-full"
+					placeholder="Search..."
+				/>
+			</div>
+			<UserMenu />
+		</nav>
 	);
 }
 

@@ -14,7 +14,7 @@ const links = [
 	},
 	{
 		title: "Movie",
-		href: "/movies/539",
+		href: "/movies",
 	},
 ];
 
@@ -38,11 +38,11 @@ function Navbar() {
 				</div>
 			</div>
 			<div className="flex items-center justify-center gap-4">
-				<div className="hidden h-8 w-52 items-center justify-center rounded bg-white px-2 py-1 xxs:flex lg:w-64">
+				<div className="hidden h-8 w-52 items-center justify-center rounded px-2 py-1 xxs:flex lg:w-64">
 					<input
 						type="text"
 						name="search-movies"
-						className="w-4/5 rounded text-sm outline-none placeholder:text-xs focus:outline-none"
+						className="w-4/5 rounded bg-transparent text-sm outline-none placeholder:text-xs focus:outline-none"
 						placeholder="Find Movies, Tv Shows"
 					/>
 					<button className="inline-flex h-10 w-1/5 items-center justify-center border-none focus:outline-none">

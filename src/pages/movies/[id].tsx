@@ -1,17 +1,15 @@
-import Link from "next/link";
 import Image from "next/image";
 import { GetServerSidePropsContext, NextPage } from "next";
 
 import axios from "axios";
 import { HeartIcon } from "@heroicons/react/20/solid";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 import { Critics } from "@assets/icons";
 import Tabs from "@components/movies/Tabs";
 import { Movie } from "@customTypes/MovieResponse";
 import { baseImageUrl } from "@constants/baseImageUrl";
 import SideNavbar from "@components/general/SideNavbar";
-import { Container, UserMenu } from "@components/index";
+import { Container, Navbar } from "@components/index";
 import { getMovieRuntimeInHours, shimmer, toBase64 } from "@utils/index";
 
 const Movie: NextPage<{ data: Movie }> = ({ data }) => {
@@ -23,25 +21,7 @@ const Movie: NextPage<{ data: Movie }> = ({ data }) => {
 				</aside>
 				<div className="flex-grow">
 					{/* header */}
-					<header className="mt-1 flex select-none items-center justify-between">
-						<div>
-							<Link
-								href="/home"
-								className="text-sm font-semibold uppercase sm:text-base"
-							>
-								Cineast
-							</Link>
-						</div>
-						<div className="flex gap-1 rounded-full border border-muted py-1 px-3 sm:py-2 md:gap-3 md:py-2 md:px-4">
-							<MagnifyingGlassIcon className="h-5 w-5 self-center text-muted" />
-							<input
-								type="text"
-								className="w-28 bg-transparent outline-none placeholder:text-muted xs:w-full"
-								placeholder="Search..."
-							/>
-						</div>
-						<UserMenu />
-					</header>
+					<Navbar />
 					{/* main */}
 					<div className="mt-6 flex gap-8 md:mt-10">
 						<main className="flex-grow">
