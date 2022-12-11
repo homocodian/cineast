@@ -1,4 +1,4 @@
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,15 +8,13 @@ import SideNavbar from "@components/general/SideNavbar";
 import { Container, MovieSearchbar, Navbar } from "@components/index";
 import { TrendingMovies } from "@customTypes/TrendingMovies";
 import { baseImageUrl } from "@constants/baseImageUrl";
-import { shuffleArray } from "@utils/index";
+// import { shuffleArray } from "@utils/index";
 
 interface IMovies {
 	data: TrendingMovies;
 }
 
 function Movies({ data }: IMovies) {
-	console.log(data);
-
 	return (
 		<Container className="mt-5 mb-8 px-4">
 			<div className="flex gap-10">
@@ -64,7 +62,7 @@ function Movies({ data }: IMovies) {
 									</div>
 								</div>
 								{/* suggested */}
-								<div>
+								{/* <div>
 									<h1 className="text-lg font-semibold md:text-xl">
 										Suggested
 									</h1>
@@ -98,10 +96,10 @@ function Movies({ data }: IMovies) {
 											)
 										)}
 									</div>
-								</div>
+								</div> */}
 
 								{/* Top Rated */}
-								<div>
+								{/* <div>
 									<h1 className="text-lg font-semibold md:text-xl">
 										Top Rated
 									</h1>
@@ -135,7 +133,7 @@ function Movies({ data }: IMovies) {
 											)
 										)}
 									</div>
-								</div>
+								</div> */}
 							</div>
 						</main>
 					</div>
@@ -147,20 +145,17 @@ function Movies({ data }: IMovies) {
 
 export default Movies;
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
 	const movies = await axios.get<TrendingMovies>(
 		`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/search/trending`
 	);
-	if (!movies.data.success || !movies.data.results.length) {
-		return {
-			notFound: true,
-			redirect: "/",
-		};
+	if (movies.statusText !== "OK") {
+		throw new Error(`Failed to fetch movies, received status ${movies.status}`);
 	}
-
 	return {
 		props: {
 			data: movies.data,
 		},
+		revalidate: 60 * 60,
 	};
 };

@@ -21,7 +21,8 @@
 			"@assets/*": ["src/assets/*"],
 			"@customTypes/*": ["src/types/*"],
 			"@constants/*": ["src/constants/*"],
-			"@utils/*": ["src/utils/*"]
+			"@utils/*": ["src/utils/*"],
+			"@api/*": ["src/pages/api/*"]
 		}
 	},
 	"include": [
