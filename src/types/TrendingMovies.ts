@@ -1,9 +1,9 @@
 export interface TrendingMovies {
 	success: boolean;
-	results: Result[];
+	results: TrendingMovieResult[];
 }
 
-export interface Result {
+export interface TrendingMovieResult {
 	id: string;
 	title: string;
 	release: string;

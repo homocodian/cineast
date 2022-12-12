@@ -6,15 +6,22 @@ import axios from "axios";
 
 import SideNavbar from "@components/general/SideNavbar";
 import { Container, MovieSearchbar, Navbar } from "@components/index";
-import { TrendingMovies } from "@customTypes/TrendingMovies";
+import {
+	TrendingMovies,
+	TrendingMovieResult,
+} from "@customTypes/TrendingMovies";
 import { baseImageUrl } from "@constants/baseImageUrl";
-// import { shuffleArray } from "@utils/index";
+import shuffleArray from "@utils/shuffleArray";
+import shimmer from "@utils/shimmer";
+import toBase64 from "@utils/toBase64";
 
 interface IMovies {
 	data: TrendingMovies;
+	suggested: TrendingMovieResult[];
+	topRated: TrendingMovieResult[];
 }
 
-function Movies({ data }: IMovies) {
+function Movies({ data, suggested, topRated }: IMovies) {
 	return (
 		<Container className="mt-5 mb-8 px-4">
 			<div className="flex gap-10">
@@ -44,6 +51,10 @@ function Movies({ data }: IMovies) {
 														className="rounded-xl"
 														height={100}
 														width={200}
+														placeholder="blur"
+														blurDataURL={`data:image/svg+xml;base64,${toBase64(
+															shimmer(100, 200)
+														)}`}
 													/>
 													<div className="space-y-4">
 														<p
@@ -62,78 +73,78 @@ function Movies({ data }: IMovies) {
 									</div>
 								</div>
 								{/* suggested */}
-								{/* <div>
+								<div>
 									<h1 className="text-lg font-semibold md:text-xl">
 										Suggested
 									</h1>
 									<div className="my-4 mt-4 grid grid-cols-2 gap-4 xxs:grid-cols-3 md:mt-8 md:grid-cols-4 md:gap-6 lg:grid-cols-5">
-										{shuffleArray(data.results.slice(0, 10)).map(
-											({ poster, title, id, release }) => (
-												<Link key={id} href={`/movies/${id}`}>
-													<div className="space-y-3">
-														<Image
-															src={`${baseImageUrl}/w342/${poster}`}
-															alt={title}
-															className="rounded-xl"
-															height={100}
-															width={200}
-														/>
-														<div className="space-y-4">
-															<p
-																title={title}
-																className="space-x-2 overflow-hidden text-ellipsis whitespace-nowrap"
-															>
-																<span className="text-sm font-bold">
-																	{title}
-																</span>
-																<span className="text-muted">{`${
-																	release.split("-")[0]
-																}`}</span>
-															</p>
-														</div>
+										{suggested.map(({ poster, title, id, release }) => (
+											<Link key={id} href={`/movies/${id}`}>
+												<div className="space-y-3">
+													<Image
+														src={`${baseImageUrl}/w342/${poster}`}
+														alt={title}
+														className="rounded-xl"
+														height={100}
+														width={200}
+														placeholder="blur"
+														blurDataURL={`data:image/svg+xml;base64,${toBase64(
+															shimmer(100, 200)
+														)}`}
+													/>
+													<div className="space-y-4">
+														<p
+															title={title}
+															className="space-x-2 overflow-hidden text-ellipsis whitespace-nowrap"
+														>
+															<span className="text-sm font-bold">{title}</span>
+															<span className="text-muted">{`${
+																release.split("-")[0]
+															}`}</span>
+														</p>
 													</div>
-												</Link>
-											)
-										)}
+												</div>
+											</Link>
+										))}
 									</div>
-								</div> */}
+								</div>
 
 								{/* Top Rated */}
-								{/* <div>
+								<div>
 									<h1 className="text-lg font-semibold md:text-xl">
 										Top Rated
 									</h1>
 									<div className="my-4 mt-4 grid grid-cols-2 gap-4 xxs:grid-cols-3 md:mt-8 md:grid-cols-4 md:gap-6 lg:grid-cols-5">
-										{shuffleArray(data.results.slice(0, 10)).map(
-											({ poster, title, id, release }) => (
-												<Link key={id} href={`/movies/${id}`}>
-													<div className="space-y-3">
-														<Image
-															src={`${baseImageUrl}/w342/${poster}`}
-															alt={title}
-															className="rounded-xl"
-															height={100}
-															width={200}
-														/>
-														<div className="space-y-4">
-															<p
-																title={title}
-																className="space-x-2 overflow-hidden text-ellipsis whitespace-nowrap"
-															>
-																<span className="text-sm font-bold">
-																	{title}
-																</span>
-																<span className="text-muted">{`${
-																	release.split("-")[0]
-																}`}</span>
-															</p>
-														</div>
+										{topRated.map(({ poster, title, id, release }) => (
+											<Link key={id} href={`/movies/${id}`}>
+												<div className="space-y-3">
+													<Image
+														src={`${baseImageUrl}/w342/${poster}`}
+														alt={title}
+														className="rounded-xl"
+														height={100}
+														width={200}
+														placeholder="blur"
+														blurDataURL={`data:image/svg+xml;base64,${toBase64(
+															shimmer(100, 200)
+														)}`}
+													/>
+													<div className="space-y-4">
+														<p
+															title={title}
+															className="space-x-2 overflow-hidden text-ellipsis whitespace-nowrap"
+														>
+															<span className="text-sm font-bold">{title}</span>
+															<span className="text-muted">{`${
+																release.split("-")[0]
+															}`}</span>
+														</p>
 													</div>
-												</Link>
-											)
-										)}
+												</div>
+											</Link>
+										))}
 									</div>
-								</div> */}
+								</div>
 							</div>
 						</main>
 					</div>
@@ -149,12 +160,16 @@ export const getStaticProps: GetStaticProps = async () => {
 	const movies = await axios.get<TrendingMovies>(
 		`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/search/trending`
 	);
-	if (movies.statusText !== "OK") {
+	if (movies.statusText !== "OK" || !movies.data.success) {
 		throw new Error(`Failed to fetch movies, received status ${movies.status}`);
 	}
+	const suggested = shuffleArray(movies.data.results.slice(0, 10));
+	const topRated = shuffleArray(movies.data.results.slice(0, 10));
 	return {
 		props: {
 			data: movies.data,
+			suggested,
+			topRated,
 		},
 		revalidate: 60 * 60,
 	};
