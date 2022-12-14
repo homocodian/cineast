@@ -1,3 +1,4 @@
+// import axios from "axios";
 import NextAuth, { NextAuthOptions } from "next-auth";
 
 import GoogleProvider from "next-auth/providers/google";
@@ -17,6 +18,24 @@ export const authOptions: NextAuthOptions = {
 	],
 	pages: {
 		signIn: "/auth/signin",
+		error: "/auth/error",
+	},
+	callbacks: {
+		async jwt({ token, user }) {
+			if (user) {
+				token.id = user.id;
+			}
+			return token;
+		},
+		async session({ session, token }) {
+			session.user.id = token.id as string;
+			return session;
+		},
+		// async signIn() {
+		// 	// console.log(user);
+		// 	// const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/new`)
+		// 	return true;
+		// },
 	},
 };
 

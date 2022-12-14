@@ -12,7 +12,6 @@ function classNames(...classes: string[]) {
 
 function UserMenu() {
 	const { data, status } = useSession();
-
 	return status === "loading" ? (
 		<div className="h-[28px] w-[28px] animate-pulse rounded-full bg-light-dark sm:h-[32px] sm:w-[32px]" />
 	) : status === "unauthenticated" ? (
