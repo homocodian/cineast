@@ -11,9 +11,7 @@ import {
 	TrendingMovieResult,
 } from "@customTypes/TrendingMovies";
 import { baseImageUrl } from "@constants/baseImageUrl";
-import shuffleArray from "@utils/shuffleArray";
-import shimmer from "@utils/shimmer";
-import toBase64 from "@utils/toBase64";
+import { shimmer, toBase64, shuffleArray } from "@utils/index";
 
 interface IMovies {
 	data: TrendingMovies;
@@ -158,7 +156,7 @@ export default Movies;
 
 export const getStaticProps: GetStaticProps = async () => {
 	const movies = await axios.get<TrendingMovies>(
-		`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/search/trending`
+		`${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/search/trending`
 	);
 	if (movies.statusText !== "OK" || !movies.data.success) {
 		throw new Error(`Failed to fetch movies, received status ${movies.status}`);

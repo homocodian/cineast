@@ -201,7 +201,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const id = context.query?.id;
 	try {
 		const res = await axios.get<Movie>(
-			`https://api-cineaste.in/api/v1/movies/${id}`
+			`${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/movies/${id}`
 		);
 		return {
 			props: {
