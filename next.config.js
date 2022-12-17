@@ -8,6 +8,7 @@ const nextConfig = {
 			"lh3.googleusercontent.com",
 			"source.unsplash.com",
 			"image.tmdb.org",
+			"res.cloudinary.com",
 		],
 	},
 	webpack: (config) => {
