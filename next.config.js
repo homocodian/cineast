@@ -9,6 +9,7 @@ const nextConfig = {
 			"source.unsplash.com",
 			"image.tmdb.org",
 			"res.cloudinary.com",
+			"media.tenor.com",
 		],
 	},
 	webpack: (config) => {

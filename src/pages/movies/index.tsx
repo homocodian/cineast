@@ -4,8 +4,13 @@ import Link from "next/link";
 
 import axios from "axios";
 
-import SideNavbar from "@components/general/SideNavbar";
-import { Container, MovieSearchbar, Navbar } from "@components/index";
+import SideNavbar from "@components/SideNavbar";
+import {
+	Container,
+	MovieSearchbar,
+	Navbar,
+	ClickableMovie,
+} from "@components/index";
 import {
 	TrendingMovies,
 	TrendingMovieResult,
@@ -41,32 +46,38 @@ function Movies({ data, suggested, topRated }: IMovies) {
 									</h1>
 									<div className="my-4 mt-4 grid grid-cols-2 gap-4 xxs:grid-cols-3 md:mt-8 md:grid-cols-4 md:gap-6 lg:grid-cols-5">
 										{data.results.map(({ poster, title, id, release }) => (
-											<Link key={id} href={`/movies/${id}`}>
-												<div className="space-y-3">
-													<Image
-														src={`${baseImageUrl}/w342/${poster}`}
-														alt={title}
-														className="rounded-xl"
-														height={100}
-														width={200}
-														placeholder="blur"
-														blurDataURL={`data:image/svg+xml;base64,${toBase64(
-															shimmer(100, 200)
-														)}`}
-													/>
-													<div className="space-y-4">
-														<p
-															title={title}
-															className="space-x-2 overflow-hidden text-ellipsis whitespace-nowrap"
-														>
-															<span className="text-sm font-bold">{title}</span>
-															<span className="text-muted">{`${
-																release.split("-")[0]
-															}`}</span>
-														</p>
-													</div>
-												</div>
-											</Link>
+											// <Link key={id} href={`/movies/${id}`}>
+											// 	<div className="space-y-3">
+											// 		<Image
+											// 			src={`${baseImageUrl}/w342/${poster}`}
+											// 			alt={title}
+											// 			className="rounded-xl"
+											// 			height={100}
+											// 			width={200}
+											// 			placeholder="blur"
+											// 			blurDataURL={`data:image/svg+xml;base64,${toBase64(
+											// 				shimmer(100, 200)
+											// 			)}`}
+											// 		/>
+											// 		<div className="space-y-4">
+											// 			<p
+											// 				title={title}
+											// 				className="space-x-2 overflow-hidden text-ellipsis whitespace-nowrap"
+											// 			>
+											// 				<span className="text-sm font-bold">{title}</span>
+											// 				<span className="text-muted">{`${
+											// 					release.split("-")[0]
+											// 				}`}</span>
+											// 			</p>
+											// 		</div>
+											// 	</div>
+											// </Link>
+											<ClickableMovie
+												poster={`${baseImageUrl}/w342/${poster}`}
+												title={title}
+												id={id}
+												release={release}
+											/>
 										))}
 									</div>
 								</div>
@@ -124,7 +135,7 @@ function Movies({ data, suggested, topRated }: IMovies) {
 														width={200}
 														placeholder="blur"
 														blurDataURL={`data:image/svg+xml;base64,${toBase64(
-															shimmer(100, 200)
+															shimmer(200, 100)
 														)}`}
 													/>
 													<div className="space-y-4">

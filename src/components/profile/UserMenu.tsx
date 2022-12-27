@@ -4,7 +4,8 @@ import Link from "next/link";
 
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Menu, Transition } from "@headlessui/react";
-import { links } from "@components/general/SideNavbar";
+import { Links } from "@components/Navbar";
+import { Bars4Icon } from "@heroicons/react/24/solid";
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
@@ -45,24 +46,20 @@ function UserMenu() {
 			>
 				<Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-dark-card shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
 					<div className="p-2">
-						<div className="md:hidden">
-							{links.map(({ title, href }) => (
-								<Menu.Item key={title}>
-									{({ active }) => (
-										<Link
-											href={href}
-											className={classNames(
-												active ? "bg-twitter-blue" : "",
-												"group flex w-full items-center rounded-md px-4 py-2 text-sm capitalize text-white"
-											)}
-										>
-											{title}
-										</Link>
-									)}
-								</Menu.Item>
-							))}
-						</div>
-
+						{status === "authenticated" && (
+							<Menu.Item>
+								{({ active }) => (
+									<Link
+										href={`/profile/${data?.user.id}`}
+										className={`${
+											active ? "bg-twitter-blue" : ""
+										} group flex w-full items-center rounded-md px-4 py-2 text-sm text-white`}
+									>
+										Profile
+									</Link>
+								)}
+							</Menu.Item>
+						)}
 						<Menu.Item>
 							{({ active }) => (
 								<button

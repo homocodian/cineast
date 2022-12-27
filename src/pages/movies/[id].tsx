@@ -8,7 +8,7 @@ import { Critics } from "@assets/icons";
 import Tabs from "@components/movies/Tabs";
 import { Movie } from "@customTypes/MovieResponse";
 import { baseImageUrl } from "@constants/baseImageUrl";
-import SideNavbar from "@components/general/SideNavbar";
+import SideNavbar from "@components/SideNavbar";
 import { Container, Navbar } from "@components/index";
 import { getMovieRuntimeInHours, shimmer, toBase64 } from "@utils/index";
 
