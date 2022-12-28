@@ -4,7 +4,7 @@ import TwitterProvider from "next-auth/providers/twitter";
 import axios from "axios";
 
 import { User } from "@customTypes/User";
-import generateRandomNumber from "@utils/generateRandomNumber";
+import generateNewUserData from "@utils/generateNewUserData";
 
 export const authOptions: NextAuthOptions = {
 	// Configure one or more authentication providers
@@ -24,18 +24,14 @@ export const authOptions: NextAuthOptions = {
 	},
 	callbacks: {
 		async jwt({ token, user }) {
-			if (user) {
-				token.id = user.id;
-			}
+			if (user) token.id = user.id;
 			return token;
 		},
 		async session({ session, token }) {
 			const user = await axios.get<User>(
 				`${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/by-id/${token.id}`
 			);
-			if (!user.data?.results?.username) {
-				throw new Error("Failed to signin!");
-			}
+			if (!user.data?.results?.username) throw new Error("Failed to signin!");
 			session.user.id = token.id as string;
 			session.user.username = user.data.results.username;
 			return session;
@@ -45,36 +41,21 @@ export const authOptions: NextAuthOptions = {
 				const isUserExists = await axios.get<User>(
 					`${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/by-id/${user.id}`
 				);
-				if (isUserExists.data?.results?.id) {
-					return true;
-				} else {
-					const res = await axios
-						.post<User>(`${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/new`, {
-							id: user.id,
-							username: user.name
-								? user.name.split(" ").join("").toLowerCase() +
-								  generateRandomNumber()
-								: `cineast_user_${generateRandomNumber()}`,
-							display_name: user.name,
-							email: user.email,
-							avatar_url: user.image,
-							backdrop_url: "",
-							bio: "",
-							device_id: "WEB",
-							token_id: "",
-							auth_method: account?.provider?.toUpperCase(),
-						})
-						.catch(() => {
-							throw new Error("Failed to create user!");
-						});
+				if (isUserExists.data?.results?.id) return true;
+				else {
+					const userData = generateNewUserData(user, account);
+					const res = await axios.post<User>(
+						`${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/new`,
+						userData
+					);
 					if (res.data?.results?.id) {
+						if (res.data.results.id !== user.id)
+							throw new Error("A user with this email is already exist!");
 						return true;
-					} else {
-						throw new Error("Failed to create user!");
-					}
+					} else throw new Error("Failed to create user!");
 				}
 			} catch (error) {
-				throw new Error("Failed to login!");
+				throw new Error(`${error}`);
 			}
 		},
 	},
