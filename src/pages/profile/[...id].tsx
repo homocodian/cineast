@@ -9,6 +9,7 @@ import { Results as UserData, User } from "@customTypes/User";
 import { Navbar, Container, SideNavbar, ActivityTabs } from "@components/index";
 import { useSession } from "next-auth/react";
 import { ToastContainer } from "react-toastify";
+import backdrop from "../../../public/backdrop.jpg";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -34,13 +35,24 @@ function ProfilePage({ user, userName }: IProfilePageProps) {
 						<main className="flex-grow">
 							{/* backdrop / cover image */}
 							<div className="relative aspect-video max-h-[300px] w-full">
-								<Image
-									src={user.backdrop_url}
-									alt={user.display_name}
-									fill
-									className="rounded-xl object-cover"
-									sizes="100vw"
-								/>
+								{user.backdrop_url ? (
+									<Image
+										src={user.backdrop_url}
+										alt={user.display_name}
+										fill
+										className="rounded-xl object-cover"
+										sizes="100vw"
+									/>
+								) : (
+									<Image
+										src={backdrop}
+										alt={user.display_name ?? userName}
+										fill
+										className="rounded-xl object-cover"
+										sizes="100vw"
+										placeholder="blur"
+									/>
+								)}
 							</div>
 							{/* profile image , user name & follow button */}
 							<div className="relative flex px-4">
@@ -99,7 +111,11 @@ function ProfilePage({ user, userName }: IProfilePageProps) {
 											About
 										</p>
 										<div className="rounded-lg bg-dark-card px-4 py-3">
-											<p className="text-sm">{user.bio}</p>
+											<p className="text-sm">
+												{user.bio
+													? user.bio
+													: "Hi there!, I'm writing reviews on cineast app"}
+											</p>
 										</div>
 									</div>
 								</div>

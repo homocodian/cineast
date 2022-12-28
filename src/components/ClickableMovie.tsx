@@ -47,22 +47,19 @@ function ClickableMovie({
 				<div className="space-y-2">
 					{!mediaRating && !userRating ? null : (
 						<div className="flex items-center justify-between">
-							{mediaRating && (
-								<div className="flex items-center justify-center">
-									<CriticsIcon className="h-6 w-5" />
-									<span className="text-xs font-semibold">
-										{Math.floor(mediaRating) * 10 + "%"}
-									</span>
-								</div>
-							)}
-							{userRating && (
-								<div className="flex items-center justify-center">
-									<HeartIcon className="h-5 w-6 text-red-500" />
-									<span className="text-xs font-semibold">
-										{Math.floor(userRating) * 10 + "%"}
-									</span>
-								</div>
-							)}
+							<div className="flex items-center justify-center">
+								<CriticsIcon className="h-6 w-5" />
+								<span className="text-xs font-semibold">
+									{mediaRating ? Math.floor(mediaRating) * 10 + "%" : "N/A"}
+								</span>
+							</div>
+
+							<div className="flex items-center justify-center">
+								<HeartIcon className="h-5 w-6 text-red-500" />
+								<span className="text-xs font-semibold">
+									{userRating ? Math.floor(userRating) * 10 + "%" : "N/A"}
+								</span>
+							</div>
 						</div>
 					)}
 					{title ? (

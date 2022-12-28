@@ -26,6 +26,8 @@ function RecentlyWatchedMovies({ userName }: { userName: string }) {
 		return <Error />;
 	}
 
+	console.log(data);
+
 	return (
 		<div className="my-4">
 			<h2 className="font-semibold">Recently Watched</h2>
