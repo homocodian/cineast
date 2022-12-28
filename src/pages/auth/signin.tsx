@@ -1,7 +1,7 @@
-import { signIn, SignInOptions } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
+import { signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
 import { IoLogoTwitter } from "react-icons/io";
 
@@ -43,7 +43,7 @@ function SignIn() {
 							className="inline-flex w-full items-center justify-center gap-4 rounded-md bg-white px-6 py-4"
 						>
 							<FcGoogle className="h-7 w-7" />
-							<span className="self-center text-black">
+							<span className="self-center overflow-hidden text-ellipsis whitespace-nowrap text-black">
 								Continue with Google
 							</span>
 						</button>
@@ -57,7 +57,9 @@ function SignIn() {
 							className="inline-flex w-full items-center justify-center gap-4 rounded-md bg-twitter-blue px-6 py-4"
 						>
 							<IoLogoTwitter className="h-7 w-7" />
-							<span className="self-center">Continue with Twitter</span>
+							<span className="self-center overflow-hidden text-ellipsis whitespace-nowrap">
+								Continue with Twitter
+							</span>
 						</button>
 					</div>
 				</div>
