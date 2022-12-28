@@ -6,25 +6,29 @@ import { SearchIcon } from "@assets/icons";
 
 const links = [
 	{
-		title: "Home",
-		href: "/home",
-	},
-	{
-		title: "Explore",
-		href: "/explore",
-	},
-	{
 		title: "Movie",
 		href: "/movies",
 	},
+	{
+		title: "Tv series",
+		href: "/tv-series",
+	},
+	{
+		title: "Communities",
+		href: "/communities",
+	},
+	{
+		title: "Features",
+		href: "/features",
+	},
 ];
 
-function Navbar() {
+function HomeNavbar() {
 	const searchInputRef = useRef<HTMLInputElement | null>(null);
 	return (
-		<div className="navbar flex h-16 items-center justify-between bg-dark-card pl-8 pr-8 text-white">
+		<div className="navbar flex h-16 items-center justify-between bg-[#4e5b68] bg-opacity-70 px-8 text-white">
 			<div className="flex items-center justify-center gap-4">
-				<Link href="/" className="brand font-playfair text-lg font-semibold">
+				<Link href="/" className="brand text-lg font-semibold">
 					Cineast
 				</Link>
 				<div className="flex items-center justify-center gap-4 text-white">
@@ -32,7 +36,7 @@ function Navbar() {
 						<Link
 							href={href}
 							key={title}
-							className="hidden w-full items-center justify-center rounded-md px-1 py-2 text-sm font-medium focus:outline-none md:inline-flex"
+							className="hidden items-center justify-center whitespace-nowrap rounded-md text-sm font-medium focus:outline-none md:inline-flex"
 						>
 							{title}
 						</Link>
@@ -41,24 +45,27 @@ function Navbar() {
 			</div>
 			<div className="flex items-center justify-center gap-4">
 				<div className="hidden h-8 w-52 items-center justify-center rounded px-2 py-1 xxs:flex lg:w-64">
-					<input
-						type="text"
-						ref={searchInputRef}
-						name="search-movies"
-						className="w-4/5 rounded bg-transparent text-sm outline-none placeholder:text-xs focus:outline-none"
-						placeholder="Find Movies, Tv Shows"
-					/>
 					<button
 						onClick={() => searchInputRef.current?.focus()}
 						className="inline-flex h-10 w-1/5 items-center justify-center border-none focus:outline-none"
 					>
 						<SearchIcon width={15} height={15} />
 					</button>
+					<input
+						type="text"
+						ref={searchInputRef}
+						name="search-movies"
+						className="w-4/5 rounded bg-transparent text-sm font-medium outline-none placeholder:text-xs placeholder:text-muted focus:outline-none"
+						placeholder="Search"
+					/>
 				</div>
 				<UserMenu />
+				<button className="hidden rounded bg-[#1775E1] px-4 py-2 text-xs font-semibold sm:text-sm lg:block">
+					Try for free
+				</button>
 			</div>
 		</div>
 	);
 }
 
-export default Navbar;
+export default HomeNavbar;
