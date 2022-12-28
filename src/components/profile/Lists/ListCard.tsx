@@ -48,8 +48,14 @@ function ListCard({ list }: ListCardProps) {
 
 				{/* list */}
 				<div className="mt-2 flex overflow-hidden rounded-md">
-					{list.list_images.slice(0, 6).map((imageUrl) => (
-						<Image src={imageUrl} alt="list-image" width={68} height={80} />
+					{list.list_images.slice(0, 6).map((imageUrl, index) => (
+						<Image
+							key={index}
+							src={imageUrl}
+							alt="list-image"
+							width={68}
+							height={80}
+						/>
 					))}
 				</div>
 			</div>

@@ -74,6 +74,7 @@ export default function Pagination({ total, itemPerPage }: PaginationProps) {
 									currentPage === page ? "bg-gray-50" : "bg-gray-800"
 								}`}
 								onClick={() => setCurrentPage(page)}
+								key={page}
 							>
 								{page}
 							</button>

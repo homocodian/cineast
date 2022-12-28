@@ -77,6 +77,7 @@ function Movies({ data, suggested, topRated }: IMovies) {
 												title={title}
 												id={id}
 												release={release}
+												key={id}
 											/>
 										))}
 									</div>

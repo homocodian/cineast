@@ -130,13 +130,14 @@ export function Review({
 			{!preview &&
 				(review.media ? (
 					<Carousel className="mb-2 mt-4">
-						{review.media.data.map(({ height, url, width }) => (
+						{review.media.data.map(({ height, url, width }, index) => (
 							<Image
 								src={url}
 								alt="media"
 								height={height}
 								width={width}
 								className="aspect-video w-full rounded-md object-cover"
+								key={index}
 							/>
 						))}
 					</Carousel>

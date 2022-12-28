@@ -34,7 +34,7 @@ function Lists({ userName }: { userName: string }) {
 	return (
 		<div className="divide-y-[0.1px]">
 			{data?.data.results.map((list) => (
-				<ListCard list={list} />
+				<ListCard key={list.id} list={list} />
 			))}
 		</div>
 	);

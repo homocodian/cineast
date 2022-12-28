@@ -184,6 +184,7 @@ function Comment({ comment }: { comment: ReviewComment }) {
 									href={`/profile/${username}`}
 									target="_blank"
 									className="text-blue-500"
+									rel="noreferrer"
 									key={username}
 								>
 									@{username}
