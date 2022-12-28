@@ -4,12 +4,6 @@ import Link from "next/link";
 
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Menu, Transition } from "@headlessui/react";
-import { Links } from "@components/Navbar";
-import { Bars4Icon } from "@heroicons/react/24/solid";
-
-function classNames(...classes: string[]) {
-	return classes.filter(Boolean).join(" ");
-}
 
 function UserMenu() {
 	const { data, status } = useSession();
@@ -50,7 +44,7 @@ function UserMenu() {
 							<Menu.Item>
 								{({ active }) => (
 									<Link
-										href={`/profile/${data?.user.id}`}
+										href={`/profile/${data?.user?.username}`}
 										className={`${
 											active ? "bg-twitter-blue" : ""
 										} group flex w-full items-center rounded-md px-4 py-2 text-sm text-white`}
