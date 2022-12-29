@@ -22,3 +22,7 @@ export { default as UserMenu } from "./profile/UserMenu";
 export { default as ActivityTabs } from "./profile/ActivityTabs";
 export { default as RecentlyWatchedMovies } from "./profile/RecentlyWatchedMovies";
 export { default as FeedGraph } from "./profile/FeedGraph";
+
+// Home
+export { default as HomeNavbar } from "./home/HomeNavbar";
+export { default as HeroSection } from "./home/HeroSection";
