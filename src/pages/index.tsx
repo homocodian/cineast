@@ -1,7 +1,7 @@
 import Head from "next/head";
 import type { NextPage } from "next";
 
-import { HeroSection, HomeNavbar } from "@components/index";
+import { Features, Footer, HeroSection, HomeNavbar } from "@components/index";
 
 const LandingPage: NextPage = () => {
 	return (
@@ -17,10 +17,10 @@ const LandingPage: NextPage = () => {
 			<HomeNavbar />
 			{/* main */}
 			<main>
-				<div className="min-h-screen bg-gradient-to-b from-[#4e5b68] to-[#49433c]">
-					<HeroSection />
-				</div>
+				<HeroSection />
+				<Features />
 			</main>
+			<Footer />
 		</>
 	);
 };

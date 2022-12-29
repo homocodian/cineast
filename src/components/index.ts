@@ -26,3 +26,5 @@ export { default as FeedGraph } from "./profile/FeedGraph";
 // Home
 export { default as HomeNavbar } from "./home/HomeNavbar";
 export { default as HeroSection } from "./home/HeroSection";
+export { default as Features } from "./home/Features";
+export { default as Footer } from "./home/Footer";

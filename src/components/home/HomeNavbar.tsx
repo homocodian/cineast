@@ -19,14 +19,14 @@ const links = [
 	},
 	{
 		title: "Features",
-		href: "/features",
+		href: "#features",
 	},
 ];
 
 function HomeNavbar() {
 	const searchInputRef = useRef<HTMLInputElement | null>(null);
 	return (
-		<div className="navbar flex h-16 items-center justify-between bg-[#4e5b68] bg-opacity-70 px-8 text-white">
+		<nav className="navbar flex h-16 items-center justify-between bg-[#4e5b68] bg-opacity-70 px-8 text-white">
 			<div className="flex items-center justify-center gap-4">
 				<Link href="/" className="brand text-lg font-semibold">
 					Cineast
@@ -64,7 +64,7 @@ function HomeNavbar() {
 					Try for free
 				</button>
 			</div>
-		</div>
+		</nav>
 	);
 }
 
