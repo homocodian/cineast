@@ -1,9 +1,4 @@
-import {
-	SiInstagram,
-	SiTwitter,
-	SiDiscord,
-	SiGoogleplay,
-} from "react-icons/si";
+import { SiInstagram, SiTwitter, SiDiscord } from "react-icons/si";
 
 function Footer() {
 	return (
@@ -30,6 +25,7 @@ function Footer() {
 					href="https://play.google.com/store/apps/details?id=com.cineast.android"
 					title="Google Play"
 					target="_blank"
+					rel="noreferrer"
 				>
 					Google Play
 				</a>

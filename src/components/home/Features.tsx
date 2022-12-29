@@ -30,8 +30,8 @@ function Features() {
 						</div>
 						<p className="my-5 text-lg font-bold">Explore</p>
 						<p>
-							See what's trending with hashtags on the explore page and discover
-							new movies..
+							See what&apos;s trending with hashtags on the explore page and
+							discover new movies..
 						</p>
 					</div>
 				</div>
