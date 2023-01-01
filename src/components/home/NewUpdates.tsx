@@ -17,7 +17,8 @@ function NewUpdates() {
 					<div className="inline-flex gap-2">
 						<Image src={backdrop} alt="backdrops" height={48} width={48} />
 						<p className="text-sm font-semibold">
-							She-Hulk's Titania Actor Wants To Join The John Wick Franchise
+							She-Hulk&apos;s Titania Actor Wants To Join The John Wick
+							Franchise
 						</p>
 					</div>
 					<div className="inline-flex gap-2">
