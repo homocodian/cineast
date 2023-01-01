@@ -4,6 +4,8 @@ import Link from "next/link";
 import { UserMenu } from "@components/index";
 import { SearchIcon } from "@assets/icons";
 
+import Menu from "../Menu";
+
 const links = [
 	{
 		title: "Movie",
@@ -27,6 +29,7 @@ function HomeNavbar() {
 	const searchInputRef = useRef<HTMLInputElement | null>(null);
 	return (
 		<nav className="navbar flex h-16 items-center justify-between bg-[#4e5b68] bg-opacity-70 px-8 text-white">
+			<Menu className="mr-2 md:hidden" />
 			<div className="flex items-center justify-center gap-4">
 				<Link href="/" className="brand text-lg font-semibold">
 					Cineast

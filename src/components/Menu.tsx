@@ -10,9 +10,16 @@ function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
 }
 
-export default function Menu() {
+type MenuProps = {
+	className?: string;
+};
+
+export default function Menu({ className }: MenuProps) {
 	return (
-		<DefaultMenu as="div" className="relative text-left lg:hidden">
+		<DefaultMenu
+			as="div"
+			className={`relative text-left lg:hidden ${className ?? ""}`}
+		>
 			<div>
 				<DefaultMenu.Button className="inline-flex w-full justify-center px-1 py-2 text-sm font-medium">
 					<Bars4Icon className="h-6 w-6" />
