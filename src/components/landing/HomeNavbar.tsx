@@ -60,9 +60,12 @@ function HomeNavbar() {
 					/>
 				</div>
 				<UserMenu />
-				<button className="hidden rounded bg-[#1775E1] px-4 py-2 text-xs font-semibold sm:text-sm lg:block">
+				<Link
+					href="/home"
+					className="hidden rounded bg-[#1775E1] px-4 py-2 text-xs font-semibold sm:text-sm lg:block"
+				>
 					Try for free
-				</button>
+				</Link>
 			</div>
 		</nav>
 	);

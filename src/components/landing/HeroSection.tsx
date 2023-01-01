@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import HeroImage from "../../../public/hero.png";
 import AvatarImage from "../../../public/avatar.png";
@@ -18,9 +19,12 @@ function HeroSection() {
 						share your thoughts and be a part of cinephile community
 					</h2>
 					<div className="flex items-center gap-4">
-						<button className="rounded bg-[#1775E1] px-4 py-2 text-xs font-semibold sm:text-sm md:text-base">
+						<Link
+							href="/home"
+							className="rounded bg-[#1775E1] px-4 py-2 text-xs font-semibold sm:text-sm md:text-base"
+						>
 							Try for free
-						</button>
+						</Link>
 						<button className="group flex items-center text-center">
 							<h3 className="text-sm font-semibold">Checkout feature</h3>
 							<ChevronRightIcon className="h-4 w-4 text-center text-white transition-all group-hover:translate-x-1" />

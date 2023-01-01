@@ -23,8 +23,11 @@ export { default as ActivityTabs } from "./profile/ActivityTabs";
 export { default as RecentlyWatchedMovies } from "./profile/RecentlyWatchedMovies";
 export { default as FeedGraph } from "./profile/FeedGraph";
 
-// Home
-export { default as HomeNavbar } from "./home/HomeNavbar";
-export { default as HeroSection } from "./home/HeroSection";
-export { default as Features } from "./home/Features";
-export { default as Footer } from "./home/Footer";
+// landing
+export { default as HomeNavbar } from "./landing/HomeNavbar";
+export { default as HeroSection } from "./landing/HeroSection";
+export { default as Features } from "./landing/Features";
+export { default as Footer } from "./landing/Footer";
+
+// home
+export { default as NewUpdates } from "./home/NewUpdates";
