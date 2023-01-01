@@ -6,15 +6,30 @@ function Footer() {
 			{/* social links */}
 			<div className="flex items-center gap-4">
 				<span className="text-lg font-medium">Follow us</span>
-				<div className="cursor-pointer rounded-full border border-gray-700 p-3 text-center hover:bg-gray-700">
+				<a
+					href="https://www.instagram.com/cineast.app/"
+					target="_blank"
+					rel="noreferrer"
+					className="inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-gray-700 text-center hover:bg-gray-700"
+				>
 					<SiInstagram className="h-5 w-6 text-white" />
-				</div>
-				<div className="cursor-pointer rounded-full border border-gray-700 p-3 text-center hover:bg-gray-700">
+				</a>
+				<a
+					href="https://twitter.com/cineast_app"
+					target="_blank"
+					rel="noreferrer"
+					className="inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-gray-700 text-center hover:bg-gray-700"
+				>
 					<SiTwitter className="h-5 w-6 text-white" />
-				</div>
-				<div className="cursor-pointer rounded-full border border-gray-700 p-3 text-center hover:bg-gray-700">
+				</a>
+				<a
+					href="https://discord.gg/TbyJkREZ7P"
+					target="_blank"
+					rel="noreferrer"
+					className="inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-gray-700 text-center hover:bg-gray-700"
+				>
 					<SiDiscord className="h-5 w-6 text-white" />
-				</div>
+				</a>
 			</div>
 
 			{/* donwload app */}
