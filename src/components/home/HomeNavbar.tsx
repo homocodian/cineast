@@ -11,7 +11,7 @@ const links = [
 	},
 	{
 		title: "Tv series",
-		href: "/tv-series",
+		href: "/tv-shows",
 	},
 	{
 		title: "Communities",

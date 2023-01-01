@@ -6,6 +6,7 @@ import { HeartIcon } from "@heroicons/react/24/solid";
 import toBase64 from "@utils/toBase64";
 import shimmer from "@utils/shimmer";
 import CriticsIcon from "@assets/icons/CriticsIcon";
+import { Critics } from "@assets/icons";
 
 interface ClickableMovieProps {
 	poster: string;
@@ -17,6 +18,9 @@ interface ClickableMovieProps {
 	className?: string;
 	mediaRating?: number | null;
 	userRating?: number | null;
+	rating?: number | null;
+	ratingByApp?: number | null;
+	link?: string;
 }
 
 function ClickableMovie({
@@ -29,9 +33,12 @@ function ClickableMovie({
 	className,
 	mediaRating,
 	userRating,
+	rating,
+	ratingByApp,
+	link,
 }: ClickableMovieProps) {
 	return (
-		<Link key={id} href={`/movies/${id}`} className={className}>
+		<Link key={id} href={link ?? `/movies/${id}`} className={className}>
 			<div className="space-y-3">
 				<Image
 					src={poster}
@@ -62,6 +69,18 @@ function ClickableMovie({
 							</div>
 						</div>
 					)}
+					<div className="flex items-center justify-between">
+						<div className="inline-flex items-center gap-1">
+							<Critics width={24} height={20} />
+							<span>{rating ? Math.floor(rating * 10) + "%" : "N/A"}</span>
+						</div>
+						<div className="inline-flex items-center gap-1">
+							<HeartIcon className="h-5 w-5 text-red-600" />
+							<span>
+								{ratingByApp ? Math.floor(ratingByApp * 10) + "%" : "N/A"}
+							</span>
+						</div>
+					</div>
 					{title ? (
 						<p
 							title={title}

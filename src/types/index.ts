@@ -1,0 +1,9 @@
+export * as User from "./User";
+export * as TvShow from "./TvShow";
+export * as TvShows from "./TvShows";
+export * as Reviews from "./Reviews";
+export * as UserLists from "./UserLists";
+export * as MovieResponse from "./MovieResponse";
+export * as ReviewComments from "./ReviewComments";
+export * as TrendingMovies from "./TrendingMovies";
+export * as UserWatchedMovies from "./UserWatchedMovies";

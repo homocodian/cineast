@@ -7,7 +7,7 @@ import axios from "axios";
 import SideNavbar from "@components/SideNavbar";
 import {
 	Container,
-	MovieSearchbar,
+	// MovieSearchbar,
 	Navbar,
 	ClickableMovie,
 } from "@components/index";
@@ -37,7 +37,7 @@ function Movies({ data, suggested, topRated }: IMovies) {
 					{/* main */}
 					<div className="mt-6 flex gap-8 md:mt-10">
 						<main className="flex-grow">
-							<MovieSearchbar />
+							{/* <MovieSearchbar /> */}
 							<div className="mt-8 flex flex-col gap-6">
 								{/* trending */}
 								<div>
