@@ -6,6 +6,10 @@ interface TextAreaProps {
 	row?: number;
 }
 
+function classNames(...classes: any[]) {
+	return classes.filter(Boolean).join(" ");
+}
+
 function TextArea({ maxLength, className, row }: TextAreaProps) {
 	const [text, setText] = useState("");
 	const [textCount, setTextCount] = useState(0);
@@ -18,9 +22,10 @@ function TextArea({ maxLength, className, row }: TextAreaProps) {
 	return (
 		<div>
 			<textarea
-				className={`w-full rounded-md bg-[#2E2E2E] px-4 py-2 shadow-none placeholder:text-muted focus:outline-none ${
-					className ?? ""
-				}`}
+				className={classNames(
+					"w-full rounded-md bg-[#2E2E2E] px-4 py-2 font-medium shadow-none placeholder:text-muted focus:outline-none",
+					className
+				)}
 				placeholder="Enter your thoughts..."
 				maxLength={maxLength}
 				onChange={onChange}

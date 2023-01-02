@@ -1,11 +1,14 @@
 import { Fragment, Dispatch, SetStateAction } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 import axios from "axios";
 import { useInfiniteQuery } from "react-query";
 import { Dialog, Transition } from "@headlessui/react";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { XMarkIcon } from "@heroicons/react/24/solid";
+import { PlusCircleIcon } from "@heroicons/react/24/outline";
 
 import { Review } from "./ReviewCard";
 import TextArea from "@components/TextArea";
@@ -14,10 +17,8 @@ import {
 	ReviewComments,
 	Result as ReviewComment,
 } from "@customTypes/ReviewComments";
-import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import Spinner from "@assets/icons/Spinner";
 import CardSkeleton from "@components/CardSkeleton";
-import { useRouter } from "next/router";
 
 dayjs.extend(relativeTime);
 
@@ -98,11 +99,18 @@ export default function CommentsModal({
 							leaveTo="opacity-0 scale-95"
 						>
 							<Dialog.Panel className="w-full max-w-lg transform overflow-hidden rounded-2xl bg-light-dark p-6 shadow-xl transition-all">
-								<Dialog.Title
-									as="h3"
-									className="mb-4 text-lg font-medium leading-6 text-white"
-								>
-									Add Reply
+								<Dialog.Title as="div" className="mb-4">
+									<div className="flex items-center justify-between">
+										<h3 className="text-lg font-medium leading-6 text-white">
+											Add Reply
+										</h3>
+										<button
+											onClick={closeModal}
+											className="rounded-full p-1 hover:bg-gray-600"
+										>
+											<XMarkIcon className="h-5 w-5 text-white" />
+										</button>
+									</div>
 								</Dialog.Title>
 								<Review review={review} preview={true} />
 								{isLoading ? (
