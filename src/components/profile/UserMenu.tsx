@@ -47,7 +47,7 @@ function UserMenu() {
 										href={`/profile/${data?.user?.username}`}
 										className={`${
 											active ? "bg-twitter-blue" : ""
-										} group flex w-full items-center rounded-md px-4 py-2 text-sm text-white`}
+										} group flex w-full items-center rounded-md px-4 py-2 text-white`}
 									>
 										Profile
 									</Link>
@@ -59,7 +59,7 @@ function UserMenu() {
 								<button
 									className={`${
 										active ? "bg-twitter-blue" : ""
-									} group flex w-full items-center rounded-md px-4 py-2 text-sm text-white`}
+									} group flex w-full items-center rounded-md px-4 py-2 text-white`}
 									onClick={() => signOut({ redirect: false })}
 								>
 									Logout

@@ -16,11 +16,9 @@ interface ClickableMovieProps {
 	ImageWidth?: number;
 	ImageHeight?: number;
 	className?: string;
-	mediaRating?: number | null;
-	userRating?: number | null;
 	rating?: number | null;
 	ratingByApp?: number | null;
-	link?: string;
+	type: string;
 }
 
 function ClickableMovie({
@@ -31,14 +29,16 @@ function ClickableMovie({
 	ImageHeight,
 	ImageWidth,
 	className,
-	mediaRating,
-	userRating,
 	rating,
 	ratingByApp,
-	link,
+	type,
 }: ClickableMovieProps) {
 	return (
-		<Link key={id} href={link ?? `/movies/${id}`} className={className}>
+		<Link
+			key={id}
+			href={type === "tv" ? `/tv-shows/${id}` : `/movies/${id}`}
+			className={className}
+		>
 			<div className="space-y-3">
 				<Image
 					src={poster}
@@ -52,7 +52,7 @@ function ClickableMovie({
 					)}`}
 				/>
 				<div className="space-y-2">
-					{!mediaRating && !userRating ? null : (
+					{/* {!mediaRating && !userRating ? null : (
 						<div className="flex items-center justify-between">
 							<div className="flex items-center justify-center">
 								<CriticsIcon className="h-6 w-5" />
@@ -68,15 +68,17 @@ function ClickableMovie({
 								</span>
 							</div>
 						</div>
-					)}
+					)} */}
 					<div className="flex items-center justify-between">
 						<div className="inline-flex items-center gap-1">
 							<Critics width={24} height={20} />
-							<span>{rating ? Math.floor(rating * 10) + "%" : "N/A"}</span>
+							<span className="text-sm">
+								{rating ? Math.floor(rating * 10) + "%" : "N/A"}
+							</span>
 						</div>
 						<div className="inline-flex items-center gap-1">
 							<HeartIcon className="h-5 w-5 text-red-600" />
-							<span>
+							<span className="text-sm">
 								{ratingByApp ? Math.floor(ratingByApp * 10) + "%" : "N/A"}
 							</span>
 						</div>

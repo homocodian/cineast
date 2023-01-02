@@ -1,6 +1,4 @@
 import { GetStaticProps } from "next";
-import Image from "next/image";
-import Link from "next/link";
 
 import axios from "axios";
 
@@ -50,16 +48,17 @@ function TvShowsPage({ data, suggested, topRated }: ITvShows) {
 												release,
 												rating,
 												rating_by_app,
+												type,
 											}) => (
 												<ClickableMovie
 													poster={`${baseImageUrl}/w342/${poster}`}
-													link={`/tv-shows/${id}`}
 													title={title}
 													id={id}
 													release={release}
 													key={id}
 													rating={rating}
 													ratingByApp={rating_by_app ? +rating_by_app : null}
+													type={type}
 												/>
 											)
 										)}
@@ -79,16 +78,17 @@ function TvShowsPage({ data, suggested, topRated }: ITvShows) {
 												release,
 												rating_by_app,
 												rating,
+												type,
 											}) => (
 												<ClickableMovie
 													poster={`${baseImageUrl}/w342/${poster}`}
-													link={`/tv-shows/${id}`}
 													title={title}
 													id={id}
 													release={release}
 													key={id}
 													rating={rating}
 													ratingByApp={rating_by_app ? +rating_by_app : null}
+													type={type}
 												/>
 											)
 										)}
@@ -109,10 +109,11 @@ function TvShowsPage({ data, suggested, topRated }: ITvShows) {
 												release,
 												rating_by_app,
 												rating,
+												type,
 											}) => (
 												<ClickableMovie
 													poster={`${baseImageUrl}/w342/${poster}`}
-													link={`/tv-shows/${id}`}
+													type={type}
 													title={title}
 													id={id}
 													release={release}

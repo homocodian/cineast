@@ -26,8 +26,6 @@ function RecentlyWatchedMovies({ userName }: { userName: string }) {
 		return <Error />;
 	}
 
-	console.log(data);
-
 	return (
 		<div className="my-4">
 			<h2 className="font-semibold">Recently Watched</h2>
@@ -40,6 +38,7 @@ function RecentlyWatchedMovies({ userName }: { userName: string }) {
 						media_release,
 						media_rating,
 						user_rating,
+						media_type,
 					}) => (
 						<ClickableMovie
 							key={media_id}
@@ -50,8 +49,9 @@ function RecentlyWatchedMovies({ userName }: { userName: string }) {
 							ImageWidth={120}
 							ImageHeight={200}
 							className="w-28"
-							mediaRating={media_rating}
-							userRating={user_rating}
+							rating={media_rating}
+							ratingByApp={user_rating}
+							type={media_type}
 						/>
 					)
 				)}
