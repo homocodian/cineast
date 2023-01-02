@@ -9,6 +9,9 @@ export { default as Container } from "./Container";
 export { default as SideNavbar } from "./SideNavbar";
 export { default as ClickableMovie } from "./ClickableMovie";
 
+// general
+export { default as WritePost } from "./general/WritePost";
+
 // cards
 export { default as Chart } from "./cards/Chart";
 export { default as StreamingNow } from "./cards/StreamingNow";

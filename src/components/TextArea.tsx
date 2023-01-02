@@ -2,9 +2,11 @@ import { useState, ChangeEvent } from "react";
 
 interface TextAreaProps {
 	maxLength: number;
+	className?: string;
+	row?: number;
 }
 
-function TextArea({ maxLength }: TextAreaProps) {
+function TextArea({ maxLength, className, row }: TextAreaProps) {
 	const [text, setText] = useState("");
 	const [textCount, setTextCount] = useState(0);
 
@@ -16,11 +18,14 @@ function TextArea({ maxLength }: TextAreaProps) {
 	return (
 		<div>
 			<textarea
-				className="w-full rounded-md bg-transparent px-4 py-2 shadow-none ring-0 focus:border focus:border-twitter-blue focus:outline-none"
+				className={`w-full rounded-md bg-[#2E2E2E] px-4 py-2 shadow-none placeholder:text-muted focus:outline-none ${
+					className ?? ""
+				}`}
 				placeholder="Enter your thoughts..."
 				maxLength={maxLength}
 				onChange={onChange}
 				value={text}
+				rows={row}
 			/>
 			<div className="text-end">
 				{textCount} / {maxLength}
