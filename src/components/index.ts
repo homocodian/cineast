@@ -30,4 +30,6 @@ export { default as Features } from "./landing/Features";
 export { default as Footer } from "./landing/Footer";
 
 // home
+export { default as Popular } from "./home/Popular";
+export { default as Calendar } from "./home/Calendar";
 export { default as NewUpdates } from "./home/NewUpdates";
