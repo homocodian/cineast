@@ -60,6 +60,7 @@ function Calendar() {
 					<button
 						className="text-sm font-bold"
 						onClick={() => updateQuery(day)}
+						key={day}
 					>
 						<p
 							className={`${
