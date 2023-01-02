@@ -61,7 +61,7 @@ const Movie: NextPage<{ data: Movie }> = ({ data }) => {
 										<div className="flex flex-col gap-1 xs:flex-row">
 											<h1
 												title={data.results[0].title}
-												className="truncate text-sm font-semibold uppercase sm:w-auto"
+												className="w-[16ch] truncate text-sm  font-semibold uppercase xxs:w-[20ch] xs:w-auto"
 											>
 												{data.results[0].title}
 											</h1>
@@ -73,7 +73,7 @@ const Movie: NextPage<{ data: Movie }> = ({ data }) => {
 											<div className="flex flex-col gap-1">
 												{/* genres & runtime */}
 												<div className="flex flex-col gap-1 xs:flex-row">
-													<p className="truncate text-sm font-normal md:w-auto">
+													<p className="w-[16ch] truncate text-sm font-normal xxs:w-[20ch] xs:w-auto">
 														{data.results[0]?.genres?.results
 															.map(({ name }) => name)
 															.join("/ ")}
@@ -121,8 +121,11 @@ const Movie: NextPage<{ data: Movie }> = ({ data }) => {
 													<div className="flex gap-2">
 														<HeartIcon className="h-5 w-5 text-red-500" />
 														<p className="self-center font-semibold">{`${
-															Math.floor(data.results[0].popularity) ?? 0
-														}%`}</p>
+															data.results[0].app_rating
+																? Math.floor(data.results[0].app_rating * 10) +
+																  "%"
+																: "N/A"
+														}`}</p>
 													</div>
 													<p className="text-center text-xs font-semibold text-muted">
 														Audience
