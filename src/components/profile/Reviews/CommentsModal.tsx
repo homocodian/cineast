@@ -46,7 +46,6 @@ export default function CommentsModal({
 	const {
 		data,
 		isLoading,
-		isError,
 		fetchNextPage,
 		isFetching,
 		isFetchingNextPage,
@@ -71,10 +70,6 @@ export default function CommentsModal({
 	function closeModal() {
 		setIsOpen(false);
 	}
-
-	// function openModal() {
-	// 	setIsOpen(true);
-	// }
 
 	return (
 		<Transition appear show={isOpen} as={Fragment}>
@@ -105,7 +100,7 @@ export default function CommentsModal({
 							<Dialog.Panel className="w-full max-w-lg transform overflow-hidden rounded-2xl bg-light-dark p-6 shadow-xl transition-all">
 								<Dialog.Title
 									as="h3"
-									className="text-lg font-medium leading-6 text-white"
+									className="mb-4 text-lg font-medium leading-6 text-white"
 								>
 									Add Reply
 								</Dialog.Title>

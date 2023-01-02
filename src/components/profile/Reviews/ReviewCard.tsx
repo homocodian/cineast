@@ -109,7 +109,7 @@ export function Review({
 						{!preview ? (
 							<ReactMarkdown>{review.body}</ReactMarkdown>
 						) : (
-							<p>{review.body.substring(0, 100)}...</p>
+							<p className="line-clamp-3">{review.body}</p>
 						)}
 					</div>
 				</div>

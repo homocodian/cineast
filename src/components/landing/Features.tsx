@@ -29,7 +29,7 @@ function Features() {
 							<MdExplore className="h-8 w-8 text-[#03045E]" />
 						</div>
 						<p className="my-5 text-lg font-bold">Explore</p>
-						<p>
+						<p className="line-clamp-2">
 							See what&apos;s trending with hashtags on the explore page and
 							discover new movies..
 						</p>
@@ -43,7 +43,7 @@ function Features() {
 							<FaCameraRetro className="h-8 w-8 text-[#2A9C38]" />
 						</div>
 						<p className="my-5 text-lg font-bold">Multi-Media</p>
-						<p>
+						<p className="line-clamp-2">
 							Add pictures and gifs to your thoughts and reviews. video uploads
 							coming soon..
 						</p>
@@ -57,7 +57,7 @@ function Features() {
 							<HiUserGroup className="h-8 w-8 text-[#FA7022]" />
 						</div>
 						<p className="my-5 text-lg font-bold">Community</p>
-						<p>
+						<p className="line-clamp-2">
 							Follow your friends and keep up with their day to day life on
 							thoughts section.
 						</p>
@@ -71,7 +71,7 @@ function Features() {
 							<StarIcon className="h-8 w-8 text-[#FCAA0E]" />
 						</div>
 						<p className="my-5 text-lg font-bold">Top Recommendations</p>
-						<p>
+						<p className="line-clamp-3">
 							Decent alogrithm, We have some interesting ideas to make this a
 							one stop recc app.
 						</p>
@@ -85,7 +85,7 @@ function Features() {
 							<HeartIcon className="h-8 w-8 text-[#E6010C]" />
 						</div>
 						<p className="my-5 text-lg font-bold">Critics & Audiences</p>
-						<p>
+						<p className="line-clamp-3">
 							Make instant decisions by skimming over critics and audiences
 							reviews/ratings at one place.
 						</p>
@@ -99,7 +99,7 @@ function Features() {
 							<FaMagic className="h-8 w-8 text-[#21BD95]" />
 						</div>
 						<p className="my-5 text-lg font-bold">Fastest Response Time</p>
-						<p>
+						<p className="line-clamp-3">
 							We built the app with the latest technology enabling smother ui
 							and faster performance.
 						</p>

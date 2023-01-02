@@ -47,7 +47,7 @@ export default function ActivityTabs({ userName }: { userName: string }) {
 								const paths = router.query?.id as string[];
 								router.push(
 									{
-										pathname: `/profile/${paths[0]}/${tab}`,
+										pathname: `/profile/${paths[0]}/${encodeURI(tab)}`,
 									},
 									undefined,
 									{ shallow: true }
