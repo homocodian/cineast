@@ -6,7 +6,7 @@ import { Bars4Icon } from "@heroicons/react/20/solid";
 
 import { Links } from "./Navbar";
 
-function classNames(...classes: string[]) {
+function classNames(...classes: any[]) {
 	return classes.filter(Boolean).join(" ");
 }
 
@@ -18,7 +18,7 @@ export default function Menu({ className }: MenuProps) {
 	return (
 		<DefaultMenu
 			as="div"
-			className={`relative text-left lg:hidden ${className ?? ""}`}
+			className={classNames("relative text-left lg:hidden", className)}
 		>
 			<div>
 				<DefaultMenu.Button className="inline-flex w-full justify-center px-1 py-2 text-sm font-medium">
@@ -41,9 +41,7 @@ export default function Menu({ className }: MenuProps) {
 							{() => (
 								<Link
 									href="/"
-									className={classNames(
-										"block px-4 py-2 text-sm capitalize md:hidden"
-									)}
+									className={classNames("block px-4 py-2 capitalize md:hidden")}
 								>
 									Cineast
 								</Link>
@@ -54,7 +52,7 @@ export default function Menu({ className }: MenuProps) {
 								{() => (
 									<Link
 										href={href}
-										className={classNames("block px-4 py-2 text-sm capitalize")}
+										className={classNames("block px-4 py-2 capitalize")}
 									>
 										{title}
 									</Link>

@@ -28,9 +28,9 @@ const links = [
 function HomeNavbar() {
 	const searchInputRef = useRef<HTMLInputElement | null>(null);
 	return (
-		<nav className="navbar flex h-16 items-center justify-between bg-[#4e5b68] bg-opacity-70 px-8 text-white">
+		<nav className="navbar flex h-16 items-center justify-between bg-[#4e5b68] bg-opacity-70 px-4 text-white lg:px-8">
 			<Menu className="mr-2 md:hidden" />
-			<div className="flex items-center justify-center gap-4">
+			<div className="hidden items-center justify-center gap-4 md:flex">
 				<Link href="/" className="brand text-lg font-semibold">
 					Cineast
 				</Link>
@@ -39,15 +39,15 @@ function HomeNavbar() {
 						<Link
 							href={href}
 							key={title}
-							className="hidden items-center justify-center whitespace-nowrap rounded-md text-sm font-medium focus:outline-none md:inline-flex"
+							className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium focus:outline-none"
 						>
 							{title}
 						</Link>
 					))}
 				</div>
 			</div>
-			<div className="flex items-center justify-center gap-4">
-				<div className="hidden h-8 w-52 items-center justify-center rounded px-2 py-1 xxs:flex lg:w-64">
+			<div className="flex items-center justify-center gap-1 md:gap-4">
+				<div className="flex h-8 w-44 items-center justify-center rounded px-2 py-1 lg:w-64">
 					<button
 						onClick={() => searchInputRef.current?.focus()}
 						className="inline-flex h-10 w-1/5 items-center justify-center border-none focus:outline-none"
