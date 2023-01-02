@@ -17,17 +17,22 @@ const inter = Inter({
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 	const [queryClient] = useState(() => new QueryClient());
 	return (
-		<QueryClientProvider client={queryClient}>
-			<NextNProgress color="#1DA1F2" />
-			<SessionProvider session={session}>
-				<div className={`${inter.variable} font-sans`}>
+		<>
+			<style jsx global>{`
+				html {
+					font-family: ${inter.style.fontFamily};
+				}
+			`}</style>
+			<QueryClientProvider client={queryClient}>
+				<NextNProgress color="#1DA1F2" />
+				<SessionProvider session={session}>
 					<Hydrate state={pageProps.dehydratedState}>
 						<Component {...pageProps} />
 					</Hydrate>
-				</div>
-			</SessionProvider>
-			<ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
-		</QueryClientProvider>
+				</SessionProvider>
+				<ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
+			</QueryClientProvider>
+		</>
 	);
 }
 
