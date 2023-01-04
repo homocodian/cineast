@@ -19,8 +19,7 @@ export default function ActivityTabs({ userName }: { userName: string }) {
 	const getSelectedTab = () => {
 		const index = Tabs.findIndex(
 			(tab) =>
-				tab.toLowerCase() ===
-				(router.query.id ? router.query?.id[1]?.toLowerCase() : null)
+				tab === router.query?.tab ?? decodeURI(router.query?.tab as string)
 		);
 		return index < 0 ? 0 : index;
 	};
@@ -44,12 +43,15 @@ export default function ActivityTabs({ userName }: { userName: string }) {
 								)
 							}
 							onClick={() => {
-								const paths = router.query?.id as string[];
 								router.push(
 									{
-										pathname: `/profile/${paths[0]}/${encodeURI(tab)}`,
+										pathname: `/profile/[username]`,
+										query: {
+											username: userName,
+											tab,
+										},
 									},
-									undefined,
+									`/profile/${userName}?tab=${encodeURI(tab)}`,
 									{ shallow: true }
 								);
 							}}

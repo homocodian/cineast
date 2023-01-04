@@ -1,6 +1,6 @@
 const FeedGraph = () => {
 	return (
-		<div className="graph">
+		<div className="graph scrollbar-hide">
 			<ul className="months">
 				<li>Jan</li>
 				<li>Feb</li>

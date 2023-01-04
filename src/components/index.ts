@@ -21,10 +21,12 @@ export { default as TrendingHashTags } from "./cards/TrendingHashTags";
 export { default as MovieSearchbar } from "./movies/MovieSearchbar";
 
 // profile
+export { default as Skeleton } from "./profile/Skeleton";
 export { default as UserMenu } from "./profile/UserMenu";
-export { default as ActivityTabs } from "./profile/ActivityTabs";
-export { default as RecentlyWatchedMovies } from "./profile/RecentlyWatchedMovies";
 export { default as FeedGraph } from "./profile/FeedGraph";
+export { default as ActivityTabs } from "./profile/ActivityTabs";
+export { default as FollowUnFollow } from "./profile/FollowUnFollow";
+export { default as RecentlyWatchedMovies } from "./profile/RecentlyWatchedMovies";
 
 // landing
 export { default as HomeNavbar } from "./landing/HomeNavbar";

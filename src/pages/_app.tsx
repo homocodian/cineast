@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useRef } from "react";
 import type { AppProps } from "next/app";
 
 import { Inter } from "@next/font/google";
 import NextNProgress from "nextjs-progressbar";
+import { ToastContainer } from "react-toastify";
 import { SessionProvider } from "next-auth/react";
-import { QueryClientProvider, QueryClient, Hydrate } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { QueryClientProvider, QueryClient, Hydrate } from "react-query";
 
 import "../styles/globals.css";
+import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -15,7 +17,7 @@ const inter = Inter({
 });
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
-	const [queryClient] = useState(() => new QueryClient());
+	const queryClient = useRef(new QueryClient());
 	return (
 		<>
 			<style jsx global>{`
@@ -23,7 +25,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 					font-family: ${inter.style.fontFamily};
 				}
 			`}</style>
-			<QueryClientProvider client={queryClient}>
+			<QueryClientProvider client={queryClient.current}>
 				<NextNProgress color="#1DA1F2" />
 				<SessionProvider session={session}>
 					<Hydrate state={pageProps.dehydratedState}>
@@ -31,6 +33,18 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 					</Hydrate>
 				</SessionProvider>
 				<ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
+				<ToastContainer
+					position="bottom-right"
+					autoClose={5000}
+					hideProgressBar={false}
+					newestOnTop={false}
+					closeOnClick
+					rtl={false}
+					pauseOnFocusLoss
+					draggable
+					pauseOnHover
+					theme="dark"
+				/>
 			</QueryClientProvider>
 		</>
 	);

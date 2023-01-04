@@ -1,9 +1,9 @@
 export interface User {
 	success: boolean;
-	results: Results;
+	results: UserResult;
 }
 
-export interface Results {
+export interface UserResult {
 	id: string;
 	username: string;
 	display_name: string;

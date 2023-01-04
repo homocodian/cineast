@@ -41,7 +41,7 @@ function Reviews({ userName }: { userName: string }) {
 	);
 
 	if (isLoading) {
-		return <CardSkeleton />;
+		return <CardSkeleton count={3} />;
 	}
 
 	if (error) {

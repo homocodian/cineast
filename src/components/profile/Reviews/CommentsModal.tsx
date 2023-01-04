@@ -114,7 +114,9 @@ export default function CommentsModal({
 								</Dialog.Title>
 								<Review review={review} preview={true} />
 								{isLoading ? (
-									<CardSkeleton />
+									<div className="my-2 mb-4">
+										<CardSkeleton />
+									</div>
 								) : (
 									<div className="max-h-96 divide-y-[0.1px] overflow-auto">
 										{data?.pages.map((group, index) => (
