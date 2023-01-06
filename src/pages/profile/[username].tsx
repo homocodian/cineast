@@ -34,6 +34,8 @@ function ProfilePage() {
 		() => getUserData(router.query.username as string, session?.user.username),
 		{
 			enabled: !router.query.username || status === "loading" ? false : true,
+			staleTime: Infinity,
+			refetchOnWindowFocus: false,
 		}
 	);
 

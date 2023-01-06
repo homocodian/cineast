@@ -8,14 +8,20 @@ import { Reviews } from "@customTypes/Reviews";
 import ReviewCard from "./ReviewCard";
 import CardSkeleton from "@components/CardSkeleton";
 import Spinner from "@assets/icons/Spinner";
+import { useSession } from "next-auth/react";
 
-const fetchReviews = (username: string, page: number = 0) => {
+const fetchReviews = (
+	username: string,
+	currentLoggedInUser: string | undefined = undefined,
+	page: number = 0
+) => {
 	return axios.get<Reviews>(
-		`${process.env.NEXT_PUBLIC_BACKEND_URL}/v2/reviews/user/${username}?username=${username}&page=${page}`
+		`${process.env.NEXT_PUBLIC_BACKEND_URL}/v2/reviews/user/${username}?username=${currentLoggedInUser}&page=${page}`
 	);
 };
 
 function Reviews({ userName }: { userName: string }) {
+	const { data: session, status } = useSession();
 	const {
 		data,
 		isLoading,
@@ -26,7 +32,8 @@ function Reviews({ userName }: { userName: string }) {
 		fetchNextPage,
 	} = useInfiniteQuery(
 		["reviews"],
-		({ pageParam }) => fetchReviews(userName, pageParam),
+		({ pageParam }) =>
+			fetchReviews(userName, session?.user.username, pageParam),
 		{
 			retry: 2,
 			refetchOnWindowFocus: false,
@@ -37,6 +44,8 @@ function Reviews({ userName }: { userName: string }) {
 					return undefined;
 				}
 			},
+			enabled: status === "loading" ? false : true,
+			staleTime: Infinity,
 		}
 	);
 
@@ -56,7 +65,7 @@ function Reviews({ userName }: { userName: string }) {
 				{data?.pages.map((groups, index) => (
 					<Fragment key={index}>
 						{groups.data.results.map((review) => (
-							<ReviewCard key={review.id} review={review} />
+							<ReviewCard key={review.id} review={review} username={userName} />
 						))}
 					</Fragment>
 				))}

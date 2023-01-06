@@ -1,6 +1,5 @@
 import { Fragment, Dispatch, SetStateAction } from "react";
 import Image from "next/image";
-import { useRouter } from "next/router";
 
 import axios from "axios";
 import { useInfiniteQuery } from "react-query";
@@ -10,7 +9,6 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
 
-import { Review } from "./ReviewCard";
 import TextArea from "@components/TextArea";
 import { Result } from "@customTypes/Reviews";
 import {
@@ -27,6 +25,7 @@ interface CommentsModalProps {
 	isOpen: boolean;
 	setIsOpen: Dispatch<SetStateAction<boolean>>;
 	review: Result;
+	username: string;
 }
 
 const fetchComments = (username: string, id: string, page: number = 0) => {
@@ -40,10 +39,8 @@ export default function CommentsModal({
 	isOpen,
 	setIsOpen,
 	review,
+	username,
 }: CommentsModalProps) {
-	const {
-		query: { id: queryId },
-	} = useRouter();
 	const {
 		data,
 		isLoading,
@@ -53,7 +50,7 @@ export default function CommentsModal({
 		hasNextPage,
 	} = useInfiniteQuery(
 		["review-comments", id],
-		({ pageParam }) => fetchComments(queryId![0], id, pageParam),
+		({ pageParam }) => fetchComments(username, id, pageParam),
 		{
 			retry: 2,
 			refetchOnWindowFocus: false,
@@ -65,6 +62,7 @@ export default function CommentsModal({
 				}
 			},
 			enabled: review.replies > 0,
+			staleTime: Infinity,
 		}
 	);
 
@@ -112,7 +110,6 @@ export default function CommentsModal({
 										</button>
 									</div>
 								</Dialog.Title>
-								<Review review={review} preview={true} />
 								{isLoading ? (
 									<div className="my-2 mb-4">
 										<CardSkeleton />
