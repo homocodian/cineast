@@ -11,15 +11,26 @@ function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
 }
 
-const Tabs = ["Feed", "Reviews & Thoughts", "Articles", "Lists"] as const;
+const Tabs = [
+	{ tab: "Feed", hrefs: ["feed"] },
+	{ tab: "Reviews & Thoughts", hrefs: ["reviews", "thoughts"] },
+	{ tab: "Articles", hrefs: ["articles"] },
+	{ tab: "Lists", hrefs: ["lists"] },
+] as const;
 
 export default function ActivityTabs({ userName }: { userName: string }) {
 	const router = useRouter();
 
 	const getSelectedTab = () => {
-		const index = Tabs.findIndex(
-			(tab) =>
-				tab === router.query?.tab ?? decodeURI(router.query?.tab as string)
+		const tab = router.query?.tab
+			? decodeURI(router.query?.tab as string)
+			: null;
+
+		if (!tab) {
+			return 0;
+		}
+		const index = Tabs.findIndex(({ hrefs }) =>
+			(hrefs as readonly string[]).includes(tab)
 		);
 		return index < 0 ? 0 : index;
 	};
@@ -30,7 +41,7 @@ export default function ActivityTabs({ userName }: { userName: string }) {
 		<div className="w-full">
 			<Tab.Group defaultIndex={0} selectedIndex={getSelectedTab()}>
 				<Tab.List className="rounded-x flex space-x-1 p-1 text-xs md:text-sm lg:text-base">
-					{Tabs.map((tab) => (
+					{Tabs.map(({ tab, hrefs }) => (
 						<Tab
 							key={tab}
 							title={tab}
@@ -48,10 +59,10 @@ export default function ActivityTabs({ userName }: { userName: string }) {
 										pathname: `/profile/[username]`,
 										query: {
 											username: userName,
-											tab,
+											tab: hrefs[0],
 										},
 									},
-									`/profile/${userName}?tab=${encodeURI(tab)}`,
+									`/profile/${userName}?tab=${encodeURI(hrefs[0])}`,
 									{ shallow: true }
 								);
 							}}
