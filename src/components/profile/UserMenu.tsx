@@ -11,10 +11,10 @@ function UserMenu() {
 		<div className="h-[28px] w-[28px] animate-pulse rounded-full bg-light-dark sm:h-[32px] sm:w-[32px]" />
 	) : status === "unauthenticated" ? (
 		<button
-			className="border-none outline-none md:inline-block"
+			className="border-none text-muted outline-none md:inline-block"
 			onClick={() => signIn()}
 		>
-			Log in
+			Sign in
 		</button>
 	) : (
 		<Menu as="div" className="relative text-left md:inline-block">

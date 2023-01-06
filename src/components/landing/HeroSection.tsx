@@ -7,7 +7,7 @@ import { ChevronRightIcon, HeartIcon } from "@heroicons/react/24/solid";
 
 function HeroSection() {
 	return (
-		<section className="min-h-screen bg-gradient-to-b from-[#4e5b68] to-[#49433c]">
+		<section>
 			<div className="mx-4 grid grid-cols-1 gap-8 py-16 px-4 md:grid-cols-2">
 				{/* hero left */}
 				<div className="flex flex-col justify-center space-y-4">

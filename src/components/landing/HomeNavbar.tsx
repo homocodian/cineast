@@ -28,13 +28,13 @@ const links = [
 function HomeNavbar() {
 	const searchInputRef = useRef<HTMLInputElement | null>(null);
 	return (
-		<nav className="navbar flex h-16 items-center justify-between bg-[#4e5b68] bg-opacity-70 px-4 text-white lg:px-8">
+		<nav className="navbar flex h-16 items-center justify-between px-4 text-white lg:px-8">
 			<Menu className="mr-2 md:hidden" />
 			<div className="hidden items-center justify-center gap-4 md:flex">
 				<Link href="/" className="brand text-lg font-semibold">
 					Cineast
 				</Link>
-				<div className="flex items-center justify-center gap-4 text-white">
+				<div className="flex items-center justify-center gap-4 text-muted">
 					{links.map(({ href, title }) => (
 						<Link
 							href={href}
