@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 import axios from "axios";
 import dayjs from "dayjs";
@@ -19,6 +20,7 @@ import { toast } from "react-toastify";
 import { useMutation } from "react-query";
 
 import ReviewMenu from "./ReviewMenu";
+import getLink from "@utils/review/getLink";
 import { Carousel } from "@components/index";
 import { Result } from "@customTypes/Reviews";
 import { ReviewLikeUnlikeError } from "@customTypes/ReviewLikeUnlike";
@@ -60,6 +62,7 @@ function Review({ review, setIsCommentModalOpen }: ReviewProps) {
 		ReviewLikeUnlikeError,
 		LikeUnlikeReviewProps
 	>(likeUnlikeReview);
+	const router = useRouter();
 
 	function likeUnlike() {
 		if (!data?.user.username) {
@@ -136,7 +139,7 @@ function Review({ review, setIsCommentModalOpen }: ReviewProps) {
 				/>
 			</div>
 			{/* review */}
-			<div className="flex items-center justify-between">
+			<div className="flex items-center justify-between gap-4">
 				<div className="space-y-1 px-2 py-1">
 					{/* rating */}
 					{review.movie?.rating ? (
@@ -168,7 +171,8 @@ function Review({ review, setIsCommentModalOpen }: ReviewProps) {
 						alt={review?.movie?.title ?? review?.thought_on?.title!}
 						height={68}
 						width={68}
-						className="rounded-lg"
+						className="cursor-pointer rounded-lg"
+						onClick={() => router.push(getLink(review))}
 					/>
 				) : null}
 			</div>
