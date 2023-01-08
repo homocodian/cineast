@@ -10,6 +10,9 @@ const nextConfig = {
 			"image.tmdb.org",
 			"res.cloudinary.com",
 			"media.tenor.com",
+			"placehold.jp",
+			"i3.ytimg.com",
+			"img.youtube.com",
 		],
 	},
 	webpack: (config) => {

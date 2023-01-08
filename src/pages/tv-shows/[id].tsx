@@ -5,10 +5,14 @@ import axios from "axios";
 import { HeartIcon } from "@heroicons/react/20/solid";
 
 import { Critics } from "@assets/icons";
-import Tabs from "@components/movies/Tabs";
-import { baseImageUrl } from "@constants/baseImageUrl";
 import SideNavbar from "@components/SideNavbar";
-import { Container, Navbar } from "@components/index";
+import { baseImageUrl } from "@constants/baseImageUrl";
+import {
+	Container,
+	Navbar,
+	MovieInfoTab,
+	TvShowInfoTab,
+} from "@components/index";
 import {
 	// getMovieRuntimeInHours,
 	shimmer,
@@ -140,13 +144,7 @@ const Movie: NextPage<{ data: TvShow }> = ({ data }) => {
 									</div>
 								</div>
 							</div>
-							<Tabs
-								tabs={{
-									plot: data.results[0].overview,
-									"cast & crew": "Cooming soon...",
-									details: "Cooming soon...",
-								}}
-							/>
+							<TvShowInfoTab show={data.results[0]} />
 							<div>
 								<p className="text-sm font-semibold capitalize">
 									Reviews & Thoughts

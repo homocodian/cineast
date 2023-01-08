@@ -15,7 +15,7 @@ export interface MovieResult {
 	tagline: string;
 	vote_average: number;
 	similar_movies: SimilarMovies;
-	movie_cast: Crew;
+	movie_cast: Cast;
 	crew: Crew;
 	videos: Videos;
 	genres: Genres;
@@ -32,6 +32,18 @@ export interface MovieResult {
 	rating_by_app: string;
 	watchedCount: string;
 	watched: string[];
+}
+
+export interface Cast {
+	results: CastResult[];
+}
+
+export interface CastResult {
+	id: number;
+	job?: string;
+	name: string;
+	image: null | string;
+	character?: string;
 }
 
 export interface Crew {

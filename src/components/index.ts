@@ -19,6 +19,11 @@ export { default as TrendingHashTags } from "./cards/TrendingHashTags";
 
 // Movies
 export { default as MovieSearchbar } from "./movies/MovieSearchbar";
+export { default as ExtraInfo } from "./movies/ExtraInfo";
+export { default as MovieInfoTab } from "./movies/MovieInfoTab";
+
+// tV shows
+export { default as TvShowInfoTab } from "./tvShow/TvShowInfoTab";
 
 // profile
 export { default as Skeleton } from "./profile/Skeleton";
