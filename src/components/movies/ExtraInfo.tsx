@@ -24,6 +24,21 @@ const ExtraInfo: FC<ExtraInfoProps> = ({ logos }) => {
 						<li className="cursor-pointer font-semibold tracking-wider">
 							Rank
 						</li>
+						<div>
+							<p className="font-semibold tracking-wide">Media</p>
+							<div className="mt-2 flex gap-3 overflow-hidden">
+								{logos?.slice(0, 4).map(({ file_path }) => (
+									<div key={file_path}>
+										<Image
+											src={`${baseImageUrl}/w45/${file_path}`}
+											alt="logos"
+											height={70}
+											width={45}
+										/>
+									</div>
+								))}
+							</div>
+						</div>
 					</ul>
 				</div>
 			</div>
