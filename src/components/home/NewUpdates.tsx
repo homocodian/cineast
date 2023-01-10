@@ -1,53 +1,78 @@
+import { useState } from "react";
+import dynamic from "next/dynamic";
+
 import axios from "axios";
 import { nanoid } from "nanoid";
 import { useQuery } from "react-query";
 
 import { News } from "@customTypes/News";
 
+const NewsModal = dynamic(() => import("@components/home/NewsModal"));
+
 function NewUpdates() {
 	const { data, isLoading, isError } = useQuery<News>("news", getNews);
+	const [isNewsModalOpen, setIsNewsModalOpen] = useState(false);
+
+	function openModal() {
+		setIsNewsModalOpen(true);
+	}
+
+	function CloseModal() {
+		setIsNewsModalOpen(false);
+	}
+
 	return (
-		<div>
-			<p className="ml-1 text-sm font-semibold">New Updates</p>
-			<div className="mt-3 w-72 space-y-2 py-4">
-				{isError ? (
-					<p>Failed to news</p>
-				) : isLoading ? (
-					<Skeleton />
-				) : (
-					<>
-						{data?.articles.slice(0, 3).map(({ urlToImage, title }) => (
-							<div className="inline-flex gap-2" key={nanoid()}>
-								{urlToImage ? (
-									/* eslint-disable @next/next/no-img-element */
-									<img
-										src={urlToImage}
-										alt="backdrops"
-										height={48}
-										width={48}
-									/>
-								) : (
-									<div
-										className="h-12 w-12 bg-gray-600"
-										title="Image not available"
-									>
-										<p className="h-12 truncate text-center text-xs">
-											Not available
-										</p>
-									</div>
-								)}
-								<p className="text-sm font-semibold line-clamp-2">{title}</p>
-							</div>
-						))}
-					</>
-				)}
+		<>
+			<div>
+				<p className="ml-1 text-sm font-semibold">New Updates</p>
+				<div className="mt-3 w-72 space-y-2 py-4">
+					{isError ? (
+						<p>Failed to news</p>
+					) : isLoading ? (
+						<Skeleton />
+					) : (
+						<>
+							{data?.articles.slice(0, 3).map(({ urlToImage, title }) => (
+								<div className="inline-flex gap-2" key={nanoid()}>
+									{urlToImage ? (
+										/* eslint-disable @next/next/no-img-element */
+										<img
+											src={urlToImage}
+											alt="backdrops"
+											height={48}
+											width={48}
+										/>
+									) : (
+										<div
+											className="h-12 w-12 bg-gray-600"
+											title="Image not available"
+										>
+											<p className="h-12 truncate text-center text-xs">
+												Not available
+											</p>
+										</div>
+									)}
+									<p className="text-sm font-semibold line-clamp-2">{title}</p>
+								</div>
+							))}
+						</>
+					)}
+				</div>
+				<div className="inline-flex w-full items-center justify-center">
+					<button
+						onClick={openModal}
+						className="text-center text-xs font-semibold text-muted"
+					>
+						View all ({data?.totalResults ? data.totalResults : null})
+					</button>
+				</div>
 			</div>
-			<div className="inline-flex w-full items-center justify-center">
-				<button className="text-center text-xs font-semibold text-muted">
-					View all ({data?.totalResults ? data.totalResults : null})
-				</button>
-			</div>
-		</div>
+			<NewsModal
+				isOpen={isNewsModalOpen}
+				closeModal={CloseModal}
+				NewsArticles={data?.articles}
+			/>
+		</>
 	);
 }
 

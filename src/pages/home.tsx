@@ -1,11 +1,17 @@
 import Image from "next/image";
 
 import RootLayout from "@components/RootLayout";
-import { Calendar, NewUpdates, Popular } from "@components/index";
+import { Popular } from "@components/index";
 
 import backdrop from "../../public/backdrop.jpg";
+import useMediaQuery from "@hooks/useMediaQuery";
+import dynamic from "next/dynamic";
+
+const Calendar = dynamic(() => import("@components/home/Calendar"));
+const NewUpdates = dynamic(() => import("@components/home/NewUpdates"));
 
 function HomePage() {
+	const isDesktop = useMediaQuery("(min-width: 1024px)");
 	return (
 		<RootLayout>
 			<main className="flex-grow">
@@ -64,10 +70,12 @@ function HomePage() {
 				</div>
 			</main>
 
-			<aside className="hidden flex-col gap-4 lg:flex">
-				<NewUpdates />
-				<Calendar />
-			</aside>
+			{!isDesktop ? null : (
+				<aside className="hidden flex-col gap-4 lg:flex">
+					<NewUpdates />
+					<Calendar />
+				</aside>
+			)}
 		</RootLayout>
 	);
 }
