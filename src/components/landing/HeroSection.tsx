@@ -33,7 +33,7 @@ function HeroSection() {
 				</div>
 
 				{/* hero right */}
-				<div className="flex items-center justify-center">
+				<div className="mr-12 flex items-center justify-end">
 					<div className="relative h-[17rem] w-48 md:h-80 md:w-52">
 						<Image
 							src={HeroImage}
