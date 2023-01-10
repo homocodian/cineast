@@ -47,7 +47,7 @@ function NewUpdates() {
 											className="h-12 w-12 bg-gray-600"
 											title="Image not available"
 										>
-											<p className="h-12 truncate text-center text-xs">
+											<p className="truncate text-center text-xs">
 												Not available
 											</p>
 										</div>

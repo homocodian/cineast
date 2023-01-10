@@ -53,7 +53,7 @@ function Calendar() {
 	return (
 		<div className="flex flex-col gap-2">
 			<h1 className="text-sm font-semibold">Calendar</h1>
-			<div className="flex w-full flex-wrap gap-2 rounded bg-dark-card px-2 py-1">
+			<div className="flex w-full gap-3 overflow-x-auto scroll-smooth rounded bg-dark-card px-4 py-3 scrollbar-hide">
 				{getDaysInMonths().map((day, index) => (
 					<button
 						className="text-sm font-bold"

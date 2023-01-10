@@ -71,7 +71,7 @@ function HomePage() {
 			</main>
 
 			{!isDesktop ? null : (
-				<aside className="hidden flex-col gap-4 lg:flex">
+				<aside className="hidden max-w-xs flex-col gap-4 lg:flex">
 					<NewUpdates />
 					<Calendar />
 				</aside>

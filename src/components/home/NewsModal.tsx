@@ -1,7 +1,10 @@
 import { Fragment } from "react";
 
+import { nanoid } from "nanoid";
+
 import { Dialog, Transition } from "@headlessui/react";
 import { News } from "@customTypes/News";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 
 type NewsModalProps = {
 	NewsArticles?: News["articles"];
@@ -41,10 +44,21 @@ export default function NewsModal({
 							leaveTo="opacity-0 scale-95"
 						>
 							<Dialog.Panel className="w-full max-w-4xl transform overflow-hidden rounded-2xl bg-dark-card p-6 text-left align-middle shadow-xl transition-all">
-								<Dialog.Title as="h3" className="text-lg font-medium leading-6">
-									News Updates
+								<Dialog.Title
+									as="div"
+									className="flex items-center justify-between"
+								>
+									<h3 className="text-lg font-medium leading-6">
+										News Updates
+									</h3>
+									<button
+										onClick={closeModal}
+										className="rounded-full p-2 hover:bg-gray-400"
+									>
+										<XMarkIcon className="h-5 w-5 text-white" />
+									</button>
 								</Dialog.Title>
-								<div className="mt-4 max-h-96 divide-y overflow-y-auto">
+								<div className="my-4 max-h-96 divide-y overflow-y-auto">
 									{NewsArticles?.map(
 										(
 											{
@@ -52,7 +66,6 @@ export default function NewsModal({
 												title,
 												url,
 												author,
-												content,
 												description,
 												publishedAt,
 												source,
@@ -60,7 +73,7 @@ export default function NewsModal({
 											index
 										) => (
 											<div
-												key={`${author}-${index}`}
+												key={nanoid()}
 												className="flex flex-col gap-4 py-4 px-2"
 											>
 												<div className="flex gap-3">
@@ -91,7 +104,8 @@ export default function NewsModal({
 															{title}
 														</a>
 														<p className="mt-2 text-end text-muted">
-															Source {source.name}, Author {author}
+															Source {source.name}, Author {author} Published at{" "}
+															{new Date(publishedAt).toLocaleDateString()}
 														</p>
 													</div>
 												</div>
@@ -110,16 +124,6 @@ export default function NewsModal({
 											</div>
 										)
 									)}
-								</div>
-
-								<div className="mt-4">
-									<button
-										type="button"
-										className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-										onClick={closeModal}
-									>
-										Close
-									</button>
 								</div>
 							</Dialog.Panel>
 						</Transition.Child>
