@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Script from "next/script";
 
 import useOneTapSignin from "@hooks/useOneTapSignin";
 
-function OneTapSignin() {
+type OneTapSigninProps = {
+	setLoading?: (value: boolean) => void;
+};
+
+function OneTapSignin({ setLoading }: OneTapSigninProps) {
 	const [googleOneTapScriptLoaded, setGoogleOneTapScriptLoaded] =
 		useState(false);
 	const { isLoading: _oneTapIsLoading } = useOneTapSignin({
@@ -11,6 +15,11 @@ function OneTapSignin() {
 		parentContainerId: "oneTap",
 		oneTapScriptLoaded: googleOneTapScriptLoaded,
 	});
+
+	useEffect(() => {
+		if (!setLoading) return;
+		setLoading(_oneTapIsLoading);
+	}, [_oneTapIsLoading]);
 
 	return (
 		<>

@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
+
+import { toast } from "react-toastify";
 import { useSession, signIn, SignInOptions } from "next-auth/react";
 
 interface OneTapSigninOptions {
 	parentContainerId?: string;
-	oneTapScriptLoaded: boolean;
+	oneTapScriptLoaded?: boolean;
 }
 
 const useOneTapSignin = (
 	opt?: OneTapSigninOptions & Pick<SignInOptions, "redirect" | "callbackUrl">
 ) => {
 	const { status } = useSession();
-	const { parentContainerId, oneTapScriptLoaded } = opt || {};
 	const [isLoading, setIsLoading] = useState(false);
+	const { parentContainerId, oneTapScriptLoaded } = opt || {};
 
 	useEffect(() => {
 		if (isLoading || status === "loading" || status === "authenticated") return;
@@ -22,13 +24,17 @@ const useOneTapSignin = (
 				client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
 				callback: async (response: any) => {
 					setIsLoading(true);
-
-					// Here we call our Provider with the token provided by google
-					await signIn("googleonetap", {
-						credential: response.credential,
-						...opt,
-					});
-					setIsLoading(false);
+					try {
+						// Here we call our Provider with the token provided by google
+						await signIn("googleonetap", {
+							credential: response.credential,
+							...opt,
+						});
+					} catch (error) {
+						toast.error("Failed to signin!");
+					} finally {
+						setIsLoading(false);
+					}
 				},
 				prompt_parent_id: parentContainerId,
 				style:

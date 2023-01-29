@@ -25,7 +25,11 @@ const links = [
 	},
 ];
 
-function HomeNavbar() {
+type HomeNavbarProps = {
+	isLoading?: boolean;
+};
+
+function HomeNavbar({ isLoading }: HomeNavbarProps) {
 	const searchInputRef = useRef<HTMLInputElement | null>(null);
 	return (
 		<nav className="navbar flex h-16 items-center justify-between px-4 text-white lg:px-8">
@@ -62,7 +66,7 @@ function HomeNavbar() {
 						placeholder="Search"
 					/>
 				</div>
-				<UserMenu />
+				<UserMenu isLoading={isLoading} />
 				<Link
 					href="/home"
 					className="hidden rounded bg-[#1775E1] px-4 py-2 text-xs font-semibold sm:text-sm lg:block"

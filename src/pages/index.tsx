@@ -2,10 +2,11 @@ import Head from "next/head";
 import { useState } from "react";
 import type { NextPage } from "next";
 
-import { Features, Footer, HeroSection, HomeNavbar } from "@components/index";
 import OneTapSignin from "@components/auth/OneTapSignin";
+import { Features, Footer, HeroSection, HomeNavbar } from "@components/index";
 
 const LandingPage: NextPage = () => {
+	const [isLoading, setIsLoading] = useState(false);
 	return (
 		<>
 			<Head>
@@ -16,13 +17,13 @@ const LandingPage: NextPage = () => {
 				/>
 				<link rel="icon" href="favicon.ico" />
 			</Head>
-			<HomeNavbar />
+			<HomeNavbar isLoading={isLoading} />
 			{/* main */}
 			<main>
 				<HeroSection />
 				<Features />
 			</main>
-			<OneTapSignin />
+			<OneTapSignin setLoading={setIsLoading} />
 			<Footer />
 		</>
 	);

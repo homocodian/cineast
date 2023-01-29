@@ -5,9 +5,14 @@ import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Menu, Transition } from "@headlessui/react";
 
-function UserMenu() {
+type UserMenuProps = {
+	isLoading?: boolean;
+};
+
+function UserMenu({ isLoading }: UserMenuProps) {
 	const { data, status } = useSession();
-	return status === "loading" ? (
+
+	return status === "loading" || isLoading === true ? (
 		<div className="h-[28px] w-[28px] animate-pulse rounded-full bg-light-dark sm:h-[32px] sm:w-[32px]" />
 	) : status === "unauthenticated" ? (
 		<button
