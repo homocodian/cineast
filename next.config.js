@@ -15,6 +15,23 @@ const nextConfig = {
 			"img.youtube.com",
 		],
 	},
+	async headers() {
+		return [
+			{
+				// Apply these headers to all routes in your application.
+				source: "/:path*",
+				headers: [
+					{
+						key: "Referrer-Policy",
+						value:
+							process.env.NODE_ENV === "development"
+								? "no-referrer-when-downgrade"
+								: "origin-when-cross-origin",
+					},
+				],
+			},
+		];
+	},
 	webpack: (config) => {
 		config.module.rules.push({
 			test: /\.svg$/,
@@ -32,7 +49,6 @@ const nextConfig = {
 				},
 			},
 		});
-
 		return config;
 	},
 };

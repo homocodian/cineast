@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import Script from "next/script";
 import type { AppProps } from "next/app";
 
 import { Inter } from "@next/font/google";

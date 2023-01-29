@@ -1,7 +1,9 @@
 import Head from "next/head";
+import { useState } from "react";
 import type { NextPage } from "next";
 
 import { Features, Footer, HeroSection, HomeNavbar } from "@components/index";
+import OneTapSignin from "@components/auth/OneTapSignin";
 
 const LandingPage: NextPage = () => {
 	return (
@@ -20,6 +22,7 @@ const LandingPage: NextPage = () => {
 				<HeroSection />
 				<Features />
 			</main>
+			<OneTapSignin />
 			<Footer />
 		</>
 	);
