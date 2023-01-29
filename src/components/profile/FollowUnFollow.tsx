@@ -1,14 +1,15 @@
-import Spinner from "@assets/icons/Spinner";
+import axios from "axios";
+import { Session } from "next-auth";
+import { toast } from "react-toastify";
+import { useMutation, useQueryClient } from "react-query";
+
 import {
 	FollowUnFollowError,
 	FollowUnFollowUserParams,
 } from "@customTypes/FollowUnFollow";
+import Spinner from "@assets/icons/Spinner";
 import { UserResult } from "@customTypes/User";
-import axios from "axios";
-import { Session } from "next-auth";
-import { useMutation, useQueryClient } from "react-query";
-import { toast } from "react-toastify";
-import SignIn from "src/pages/auth/signin";
+import { signIn } from "next-auth/react";
 
 type FollowUnFollowProps = {
 	status: "loading" | "authenticated" | "unauthenticated";
@@ -48,7 +49,7 @@ function FollowUnFollow({ status, user, session }: FollowUnFollowProps) {
 
 	function follow() {
 		if (status === "unauthenticated") {
-			SignIn();
+			signIn();
 			return;
 		}
 		mutate({
@@ -60,7 +61,7 @@ function FollowUnFollow({ status, user, session }: FollowUnFollowProps) {
 
 	function unfollow() {
 		if (status === "unauthenticated") {
-			SignIn();
+			signIn();
 			return;
 		}
 		mutate({
